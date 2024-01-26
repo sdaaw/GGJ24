@@ -309,14 +309,18 @@ MonoBehaviour:
   jumpForce: 1.2
   gravity: -12
   meowmentSpeed: 10
+  _pVelocity: {x: 0, y: 0, z: 0}
   _groundSensor: {fileID: 3091620502422744178}
   _groundDistance: 0.3
   _groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   _bobSpeed: 0.1
   _bobAmplitude: 0.002
   IsMoving: 0
   shootDamage: 60
   _aimbotAimSpeed: 30
   _shootCooldown: 0.1
+  _dashPower: 0
+  _dashCooldown: 0
+  _isDashOnCooldown: 0

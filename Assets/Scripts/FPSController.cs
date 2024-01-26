@@ -38,6 +38,7 @@ public class FPSController : MonoBehaviour
 
     private bool _isGrounded;
 
+    [SerializeField]
     private Vector3 _pVelocity;
 
     private float _xrotation;
@@ -79,6 +80,13 @@ public class FPSController : MonoBehaviour
 
 
     private int _curveControlPoints;
+
+    [SerializeField]
+    private float _dashPower;
+    [SerializeField]
+    private float _dashCooldown;
+    [SerializeField]
+    private bool _isDashOnCooldown;
     public float Fov
     {
         get
@@ -125,8 +133,23 @@ public class FPSController : MonoBehaviour
         {
             _isAimbotting = !_isAimbotting;
         }
-
         if(_isAimbotting) { Aimbot(); }
+
+
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Dash(_pVelocity);
+        }
+    }
+
+
+    private void Dash(Vector3 direction)
+    {
+        if (_isDashOnCooldown) return;
+
+        StartCoroutine(DashCooldown());
+
+
     }
 
     public void Shoot()
@@ -261,6 +284,14 @@ public class FPSController : MonoBehaviour
             }
         }
         return target;
+    }
+
+
+    IEnumerator DashCooldown()
+    {
+        _isDashOnCooldown = true;
+        yield return new WaitForSeconds(_dashCooldown);
+        _isDashOnCooldown = false;
     }
 
     IEnumerator ShootCooldown()
