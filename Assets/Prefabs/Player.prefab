@@ -321,8 +321,8 @@ MonoBehaviour:
   shootDamage: 60
   _aimbotAimSpeed: 30
   _shootCooldown: 0.1
-  _dashPower: 2
-  _dashDuration: 0.2
+  _dashPower: 10
+  _dashDuration: 0.1
   _dashCooldown: 1
   _isDashOnCooldown: 0
   _isDashing: 0

@@ -88,7 +88,9 @@ public class FPSController : MonoBehaviour
     [SerializeField]
     private bool _isDashOnCooldown, _isDashing;
 
-    private Vector3 _dashDirection;
+    private Vector3 _dashDirection, _dashPosition;
+
+
     public float Fov
     {
         get
@@ -122,7 +124,7 @@ public class FPSController : MonoBehaviour
 
         if(_isDashing)
         {
-            transform.position = Vector3.Lerp(transform.position, (transform.position + _dashDirection) * _dashPower, _dashDuration);
+            transform.position = Vector3.Lerp(transform.position, _dashPosition, _dashDuration);
         }
     }
     void LateUpdate()
@@ -140,8 +142,10 @@ public class FPSController : MonoBehaviour
         {
             _isAimbotting = !_isAimbotting;
         }
-        if(_isAimbotting) { Aimbot(); }
-
+        if(_isAimbotting) 
+        { 
+            Aimbot(); 
+        }
 
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -153,6 +157,8 @@ public class FPSController : MonoBehaviour
     private void Dash(Vector3 direction)
     {
         if (_isDashOnCooldown) return;
+        direction = new(direction.x * 1, 0, direction.z * 1);
+        _dashPosition = transform.position - direction * _dashPower;
         _dashDirection = direction;
         _isDashing = true;
         StartCoroutine(DashCooldown());
@@ -300,6 +306,7 @@ public class FPSController : MonoBehaviour
         _isDashOnCooldown = true;
         yield return new WaitForSeconds(_dashCooldown);
         _isDashOnCooldown = false;
+        _isDashing = false;
     }
 
     IEnumerator ShootCooldown()
