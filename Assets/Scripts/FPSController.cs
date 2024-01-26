@@ -82,11 +82,13 @@ public class FPSController : MonoBehaviour
     private int _curveControlPoints;
 
     [SerializeField]
-    private float _dashPower;
+    private float _dashPower, _dashDuration;
     [SerializeField]
     private float _dashCooldown;
     [SerializeField]
-    private bool _isDashOnCooldown;
+    private bool _isDashOnCooldown, _isDashing;
+
+    private Vector3 _dashDirection;
     public float Fov
     {
         get
@@ -117,6 +119,11 @@ public class FPSController : MonoBehaviour
     {
         GetOtherInputs();
         MoveInputs();
+
+        if(_isDashing)
+        {
+            transform.position = Vector3.Lerp(transform.position, (transform.position + _dashDirection) * _dashPower, _dashDuration);
+        }
     }
     void LateUpdate()
     {
@@ -146,10 +153,9 @@ public class FPSController : MonoBehaviour
     private void Dash(Vector3 direction)
     {
         if (_isDashOnCooldown) return;
-
+        _dashDirection = direction;
+        _isDashing = true;
         StartCoroutine(DashCooldown());
-
-
     }
 
     public void Shoot()
@@ -182,6 +188,8 @@ public class FPSController : MonoBehaviour
         {
             _xmeow = Input.GetAxis("Horizontal");
             _ymeow = Input.GetAxis("Vertical");
+            _pVelocity.x = _xmeow;
+            _pVelocity.z = _ymeow;
             _meowment = transform.forward * _ymeow + transform.right * _xmeow;
         }
 
@@ -237,7 +245,7 @@ public class FPSController : MonoBehaviour
     private void CancelBob()
     {
         //_timer = 0;
-        _cameraObject.transform.localPosition = Vector3.Lerp(_cameraObject.transform.localPosition, _cameraPosition, _bobAmplitude);
+        _cameraObject.transform.localPosition = Vector3.Lerp(_cameraObject.transform.localPosition, _cameraPosition, _bobAmplitude * 2);
     }
 
     private void Aimbot()
