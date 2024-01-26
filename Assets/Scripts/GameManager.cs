@@ -11,11 +11,16 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public GameObject player;
 
+    [SerializeField]
+    private GameObject spawnPosTransform;
+
 
     [SerializeField]
     private GameObject sphere;
 
     public static GameManager instance;
+
+
 
 
     public List<GameObject> EntitiesInWorld = new List<GameObject>();
@@ -24,7 +29,7 @@ public class GameManager : MonoBehaviour
 
         if (instance == null) { instance = this; }
 
-        player = Instantiate(_playerPrefab, new(0, 2, 0), Quaternion.identity);
+        player = Instantiate(_playerPrefab, spawnPosTransform.transform.position, Quaternion.identity);
         SpawnSphereEntities(100);
     }
 

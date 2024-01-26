@@ -88,7 +88,7 @@ public class FPSController : MonoBehaviour
     [SerializeField]
     private bool _isDashOnCooldown, _isDashing;
 
-    private Vector3 _dashDirection, _dashPosition;
+    private Vector3 _dashDirection, _dashPosition, _dashStartPosition;
 
 
     public float Fov
@@ -149,7 +149,9 @@ public class FPSController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Dash(_pVelocity);
+            if (_isDashing) return;
+            _dashStartPosition = transform.position;
+            Dash(_meowment);
         }
     }
 
@@ -157,10 +159,10 @@ public class FPSController : MonoBehaviour
     private void Dash(Vector3 direction)
     {
         if (_isDashOnCooldown) return;
-        direction = new(direction.x * 1, 0, direction.z * 1);
-        _dashPosition = transform.position - direction * _dashPower;
-        _dashDirection = direction;
+
         _isDashing = true;
+        _dashPosition = transform.position + (direction * _dashPower);
+
         StartCoroutine(DashCooldown());
     }
 
@@ -200,7 +202,6 @@ public class FPSController : MonoBehaviour
         }
 
         _controller.Move(_meowment * Time.deltaTime * meowmentSpeed);
-
 
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
