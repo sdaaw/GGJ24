@@ -86,6 +86,14 @@ public class FPSController : MonoBehaviour
 
     private Vector3 _dashPosition;
 
+    [SerializeField]
+    private GameObject _viewmodelObject;
+
+    [SerializeField]
+    private Animator _animator;
+
+
+
 
     public float Fov
     {
@@ -109,6 +117,8 @@ public class FPSController : MonoBehaviour
         _controller = GetComponent<CharacterController>();
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        _viewmodelObject.transform.parent = cameraObject.transform;
     }
 
 
@@ -187,6 +197,8 @@ public class FPSController : MonoBehaviour
             _pVelocity.y = 0f;
         }
 
+        //_animator.SetBool("IsMoving", IsMoving);
+
         //pitäs varmaa limittaa se diagonal movement spiidi,,... jotenmkin,,,,,,,, tiedöäppä tuota sitten,,,,,, 
         if (_isGrounded) 
         {
@@ -196,7 +208,6 @@ public class FPSController : MonoBehaviour
             _pVelocity.z = _ymeow;
             _meowment = transform.forward * _ymeow + transform.right * _xmeow;
         }
-
         _controller.Move(_meowment * Time.deltaTime * meowmentSpeed);
 
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
@@ -243,6 +254,12 @@ public class FPSController : MonoBehaviour
             cameraObject.transform.position.x,
             cameraObject.transform.position.y + Mathf.Sin(_timer / _bobSpeed) * _bobAmplitude, 
             cameraObject.transform.position.z
+            );
+
+        _viewmodelObject.transform.position = new Vector3(
+            _viewmodelObject.transform.position.x,
+            _viewmodelObject.transform.position.y + Mathf.Sin(_timer / _bobSpeed) * _bobAmplitude,
+            _viewmodelObject.transform.position.z
             );
     }
     private void CancelBob()
