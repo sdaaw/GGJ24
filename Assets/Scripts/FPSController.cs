@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -16,9 +16,7 @@ public class FPSController : MonoBehaviour
     private CharacterController _controller;
 
     [SerializeField]
-    private GameObject _cameraObject;
-
-    private Vector3 _rotation;
+    public GameObject cameraObject;
 
     [SerializeField]
     private bool _invertMouse;
@@ -64,8 +62,6 @@ public class FPSController : MonoBehaviour
 
     private float _timer;
 
-    private Vector3 _shootPosition;
-
     public float shootDamage;
 
     private GameObject _aimbotTarget;
@@ -79,7 +75,7 @@ public class FPSController : MonoBehaviour
     private float _shootCooldown;
 
 
-    private int _curveControlPoints;
+    //private int _curveControlPoints;
 
     [SerializeField]
     private float _dashPower, _dashDuration;
@@ -88,7 +84,7 @@ public class FPSController : MonoBehaviour
     [SerializeField]
     private bool _isDashOnCooldown, _isDashing;
 
-    private Vector3 _dashDirection, _dashPosition, _dashStartPosition;
+    private Vector3 _dashPosition;
 
 
     public float Fov
@@ -105,9 +101,8 @@ public class FPSController : MonoBehaviour
 
     void Start()
     {
-        _curveControlPoints = 3;
         Camera.main.fieldOfView = _fov;
-        _cameraPosition = _cameraObject.transform.localPosition;
+        _cameraPosition = cameraObject.transform.localPosition;
 
         _ = (_controller = GetComponent<CharacterController>()) ?? (_controller = gameObject.AddComponent<CharacterController>()); // XDD
 
@@ -119,6 +114,7 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.Paused) return;
         GetOtherInputs();
         MoveInputs();
 
@@ -129,6 +125,7 @@ public class FPSController : MonoBehaviour
     }
     void LateUpdate()
     {
+        if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.Paused) return;
         LookInput();
     }
 
@@ -150,7 +147,6 @@ public class FPSController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (_isDashing) return;
-            _dashStartPosition = transform.position;
             Dash(_meowment);
         }
     }
@@ -172,9 +168,9 @@ public class FPSController : MonoBehaviour
         RaycastHit hit;
 
         StartCoroutine(ShootCooldown());
-        if(Physics.Raycast(_cameraObject.transform.position, _cameraObject.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        if(Physics.Raycast(cameraObject.transform.position, cameraObject.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
-            Debug.DrawRay(_cameraObject.transform.position, _cameraObject.transform.forward * hit.distance, Color.red, 1);
+            Debug.DrawRay(cameraObject.transform.position, cameraObject.transform.forward * hit.distance, Color.red, 1);
             if(hit.transform.tag == "entity")
             {
                 hit.transform.GetComponent<Entity>().CurrentHealth -= shootDamage;
@@ -191,7 +187,7 @@ public class FPSController : MonoBehaviour
             _pVelocity.y = 0f;
         }
 
-        //pit�s varmaa limittaa se diagonal movement spiidi,,... jotenmkin,,,,,,,, tied��pp� tuota sitten,,,,,, 
+        //pitäs varmaa limittaa se diagonal movement spiidi,,... jotenmkin,,,,,,,, tiedöäppä tuota sitten,,,,,, 
         if (_isGrounded) 
         {
             _xmeow = Input.GetAxis("Horizontal");
@@ -221,7 +217,7 @@ public class FPSController : MonoBehaviour
         if (_xmeow == 0 && _ymeow == 0)
         {
             IsMoving = false;
-            if (_cameraObject.transform.position != _cameraPosition)
+            if (cameraObject.transform.position != _cameraPosition)
             {
                 CancelBob();
             }
@@ -236,23 +232,23 @@ public class FPSController : MonoBehaviour
 
         _xrotation -= y;
         _xrotation = Mathf.Clamp(_xrotation, -90f, 90f);
-        _cameraObject.transform.localRotation = Quaternion.Euler(_xrotation, 0f, 0f);
+        cameraObject.transform.localRotation = Quaternion.Euler(_xrotation, 0f, 0f);
         transform.Rotate(Vector3.up * x);
     }
 
     private void Bob()
     {
         _timer += 1 * Time.deltaTime;
-        _cameraObject.transform.position = new Vector3(
-            _cameraObject.transform.position.x,
-            _cameraObject.transform.position.y + Mathf.Sin(_timer / _bobSpeed) * _bobAmplitude, 
-            _cameraObject.transform.position.z
+        cameraObject.transform.position = new Vector3(
+            cameraObject.transform.position.x,
+            cameraObject.transform.position.y + Mathf.Sin(_timer / _bobSpeed) * _bobAmplitude, 
+            cameraObject.transform.position.z
             );
     }
     private void CancelBob()
     {
         //_timer = 0;
-        _cameraObject.transform.localPosition = Vector3.Lerp(_cameraObject.transform.localPosition, _cameraPosition, _bobAmplitude * 2);
+        cameraObject.transform.localPosition = Vector3.Lerp(cameraObject.transform.localPosition, _cameraPosition, _bobAmplitude * 2);
     }
 
     private void Aimbot()
@@ -263,21 +259,21 @@ public class FPSController : MonoBehaviour
             _isAimbotting = false;
             return;
         }
-        Quaternion angle = Quaternion.LookRotation(_aimbotTarget.transform.position - _cameraObject.transform.position);
+        Quaternion angle = Quaternion.LookRotation(_aimbotTarget.transform.position - cameraObject.transform.position);
 
         //clamp from doing kuperkeikkas
         angle.x = Mathf.Clamp(angle.x, -90f, 90f);
 
         //freeze roll, only pitch and yaw
-        _cameraObject.transform.eulerAngles = new Vector3(_cameraObject.transform.eulerAngles.x, _cameraObject.transform.eulerAngles.y, 0);
-        _cameraObject.transform.rotation = Quaternion.Slerp(_cameraObject.transform.rotation, angle, Time.deltaTime * _aimbotAimSpeed);
+        cameraObject.transform.eulerAngles = new Vector3(cameraObject.transform.eulerAngles.x, cameraObject.transform.eulerAngles.y, 0);
+        cameraObject.transform.rotation = Quaternion.Slerp(cameraObject.transform.rotation, angle, Time.deltaTime * _aimbotAimSpeed);
         /*Quaternion[] points = new Quaternion[_curveControlPoints];
         for(int i = 0; i < _curveControlPoints; i++)
         {
             _cameraObject.transform.rotation = Quaternion.Lerp(_cameraObject.transform.rotation, points[i], Time.deltaTime * _aimbotAimSpeed);
         }*/
 
-        float angleDist = Vector3.Angle(_aimbotTarget.transform.position - _cameraObject.transform.position, _cameraObject.transform.forward);
+        float angleDist = Vector3.Angle(_aimbotTarget.transform.position - cameraObject.transform.position, cameraObject.transform.forward);
 
         if (angleDist < 4f)
         {
@@ -316,4 +312,30 @@ public class FPSController : MonoBehaviour
         yield return new WaitForSeconds(_shootCooldown);
         _isShootCooldown = false;
     }
+
+
+
+    //
+    //
+    //
+    //
+    //
+    //     IF ATTE READS THIS VI VON ZULUL
+    //
+    //    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠋⠉⠉⠄⠐⠠⢀⠄⠄⠄⢀⡘⢦⡀⢀
+    //    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢋⣤⣦⣤⣶⣶⣶⣦⡄⠄⠑⠄⠄⠐⠑⠄⣽⣷
+    //    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢱⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠄⠄⠄⠄⠄⢸⣿⣿
+    //    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠁⢨⣿⣿⣿⣿⣿⣿⣿⡿⠗⠄⠄⠄⠄⠄⠸⣿⣿
+    //    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠈⡀⠄⠠⠄⠄⠄⠄⢙⢗⡀⠄⣠⡀⠄⠄⠄⢸⣿
+    //    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡘⠄⠄⠄⣠⡀⡄⠄⠄⢎⣿⡶⢶⠄⡃⠄⠄⠄⣼⣿
+    //    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠁⠁⠈⠉⠉⢚⣍⣩⡀⠄⢀⠄⠺⠄⠄⠄⠄⣿⣿
+    //    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠄⢒⡛⡛⠛⠛⢿⡁⠄⠉⠄⠄⠄⣠⡄⠸⣿⣿
+    //    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠄⠉⢉⡉⡉⠁⠄⠁⢠⡎⠄⣀⢰⣿⠁⠄⢿⣿
+    //    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠄⠄⠄⠄⠄⠄⢼⡇⢢⣏⠄⠄⠄⠄⣸⣿
+    //    ⣿⣿⡿⠻⣿⣿⣿⣿⣿⣿⣿⡿⠛⠁⠄⠄⠄⠄⠄⠄⠙⠁⢠⣿⣷⣄⣀⠄⣿⣿
+    //    ⣏⢀⠄⠄⢈⣯⣿⣿⣿⣿⣿⠇⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣼⣿⣿⣿⣿⣿⣿⣿
+    //    ⡟⠛⠛⢛⣟⡛⠛⠛⣿⣿⣿⠄⠄⠄⠄⠄⠄⠄⠄⠄⢀⡸⣿⣿⣿⣿⢿⣿⣿⣿
+    //    ⠁⠄⠄⢈⠉⠁⠄⠄⣹⣿⣿⠄⠄⠄⠄⠄⠄⠄⠄⢠⣾⣷⣿⣿⣭⣾⣿⣿⣿⣿
+    //    ⠄⠄⠄⠄⠁⠄⠄⠄⢿⣿⣿⠄⠄⠄⠄⠄⠄⠄⢠⣿⣿⣿⣿⣿⡿⢻⣿⣿⣟⣿
+    //
 }

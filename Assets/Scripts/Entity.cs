@@ -5,6 +5,15 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
 
+
+    public enum EntityType
+    {
+        None,
+        Normal,
+        Boss
+    }
+
+    public EntityType type;
     public float CurrentHealth
     {
         get
@@ -23,8 +32,6 @@ public class Entity : MonoBehaviour
 
     private Renderer _renderer;
 
-    private float _timer;
-
     void Start()
     {
         _renderer = GetComponent<Renderer>();
@@ -40,8 +47,13 @@ public class Entity : MonoBehaviour
         if (_currentHealth <= 0)
         {
             GameManager.instance.EntitiesInWorld.Remove(gameObject);
-            Destroy(gameObject);
+            OnDie();
         }
+    }
+
+    public void OnDie()
+    {
+        Destroy(gameObject);
     }
 
     private IEnumerator DamageVisual()
