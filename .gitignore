@@ -70,3 +70,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Assets/MikkoArt/AmplifyOcclusion/Packages/PostProcessingSRP_4.3.0.unitypackage.meta
+Assets/MikkoArt/AmplifyOcclusion/Packages/PostProcessingSRP_3.0.0.unitypackage.meta
+Assets/MikkoArt/AmplifyOcclusion/Packages/PostProcessingLightweightRP_5.7.2.unitypackage.meta

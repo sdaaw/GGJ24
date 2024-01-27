@@ -122,6 +122,8 @@ public class FPSController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         _viewmodelObject.transform.parent = cameraObject.transform;
+
+        _animator.speed = 0.5f;
     }
 
 

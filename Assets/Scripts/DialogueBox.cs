@@ -17,15 +17,25 @@ public class DialogueBox : MonoBehaviour
 
     private int _idx;
 
+    public enum DialogueBoxState
+    {
+        None,
+        InProgress,
+        Done,
+    }
+
+    public DialogueBoxState state;
+
     void Start()
     {
-        textContent = _dialogueTextObject.text;
-        _dialogueTextObject.text = "";
-        DisplayText(textContent, 0.01f);
+        state = DialogueBoxState.Done;
     }
 
     public void DisplayText(string text, float speed)
     {
+        _dialogueTextObject.text = "";
+        _idx = 0;
+        state = DialogueBoxState.InProgress;
         StartCoroutine(DisplayTextVisual(text, speed));
     }
 
@@ -34,14 +44,15 @@ public class DialogueBox : MonoBehaviour
 
         yield return new WaitForSeconds(speed);
 
-
         _dialogueTextObject.text += text[_idx];
         _idx++;
 
         if (_idx >= text.Length)
         {
+            state = DialogueBoxState.Done;
             yield return null;
-        } else
+        } 
+        else
         {
             StartCoroutine(DisplayTextVisual(text, speed));
         }
