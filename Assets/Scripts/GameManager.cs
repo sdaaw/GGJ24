@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     public GameStateHandler StateHandler;
 
+    private int _sphereSpawnCount;
+
 
     void Start()
     {
@@ -42,7 +44,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<FPSController>().cameraObject = Camera.main.gameObject;
         Camera.main.transform.parent = player.transform;
         Camera.main.transform.localPosition = new(0, 0.5f, 0);
-        SpawnSphereEntities(100);
+        SpawnSphereEntities(_sphereSpawnCount);
     }
 
     public void QuitGameToMenu()
