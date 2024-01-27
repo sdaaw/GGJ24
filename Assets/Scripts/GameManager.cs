@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     public GameStateHandler StateHandler;
 
+
     void Start()
     {
         StateHandler = GetComponent<GameStateHandler>();
@@ -43,6 +44,27 @@ public class GameManager : MonoBehaviour
         Camera.main.transform.localPosition = new(0, 0.5f, 0);
         SpawnSphereEntities(100);
     }
+
+    public void QuitGameToMenu()
+    {
+        if(EntitiesInWorld.Count > 0) 
+        { 
+            for(int i = 0; i <  EntitiesInWorld.Count; i++) 
+            {
+                Destroy(EntitiesInWorld[i]);
+            }
+        }
+        EntitiesInWorld = new();
+        StateHandler.CurrentState = GameStateHandler.GameState.InMenu;
+
+        Camera.main.transform.parent = null;
+
+        Camera.main.transform.position = Vector3.zero;
+
+        Destroy(player);
+        player = null;
+    }
+
     public void SpawnSphereEntities(int count)
     {
         Vector3 pos = new();

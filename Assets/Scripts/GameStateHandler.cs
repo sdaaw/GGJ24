@@ -58,10 +58,12 @@ public class GameStateHandler : MonoBehaviour
             }
             case GameState.InPlay:
             {
+                Cursor.lockState = CursorLockMode.Locked;
                 break;
             }
             case GameState.Paused:
             {
+                Cursor.lockState = CursorLockMode.None;
                 break;
             }
         }

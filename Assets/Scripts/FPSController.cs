@@ -18,8 +18,6 @@ public class FPSController : MonoBehaviour
     [SerializeField]
     public GameObject cameraObject;
 
-    private Vector3 _rotation;
-
     [SerializeField]
     private bool _invertMouse;
 
@@ -64,8 +62,6 @@ public class FPSController : MonoBehaviour
 
     private float _timer;
 
-    private Vector3 _shootPosition;
-
     public float shootDamage;
 
     private GameObject _aimbotTarget;
@@ -88,7 +84,7 @@ public class FPSController : MonoBehaviour
     [SerializeField]
     private bool _isDashOnCooldown, _isDashing;
 
-    private Vector3 _dashDirection, _dashPosition, _dashStartPosition;
+    private Vector3 _dashPosition;
 
 
     public float Fov
@@ -151,7 +147,6 @@ public class FPSController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (_isDashing) return;
-            _dashStartPosition = transform.position;
             Dash(_meowment);
         }
     }
