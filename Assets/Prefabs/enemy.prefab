@@ -145,6 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ac9d31229208a47b71613fcf792044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   _currentHealth: 5
   _target: {fileID: 0}
   _isEnabled: 1
+  chaseTarget: 0
+  _timerMax: 1
