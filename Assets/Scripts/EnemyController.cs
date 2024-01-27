@@ -12,9 +12,10 @@ public class EnemyController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            // TODO: needs last wave logic
             SpawnWave(enemyWaves[nextWaveIndex]);
             currentWave = enemyWaves[nextWaveIndex];
-            nextWaveIndex += 1;
+            nextWaveIndex++;
         }
     }
 

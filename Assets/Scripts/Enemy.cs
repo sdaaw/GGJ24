@@ -6,8 +6,9 @@ using UnityEngine.AI;
 public class Enemy : Entity
 {
     [SerializeField]
-    private Transform _target;
+    protected Transform target;
 
+    [SerializeField]
     private Vector3 _targetPosition;
 
     [SerializeField]
@@ -21,19 +22,20 @@ public class Enemy : Entity
     [SerializeField]
     private float _timerMax;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _agent = this.GetComponent<NavMeshAgent>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if(_isEnabled)
         {
             if (chaseTarget)
             {
-                _agent.SetDestination(_target.position);
-            } else
+                _agent.SetDestination(target.position);
+            }
+            else
             {
                 MoveAround();
                 _agent.SetDestination(_targetPosition);
@@ -41,7 +43,7 @@ public class Enemy : Entity
         }
     }
 
-    public void MoveAround()
+    protected virtual void MoveAround()
     {
         timer += Time.deltaTime;
 
@@ -52,19 +54,19 @@ public class Enemy : Entity
         }
     }
 
-    public void SetTarget(Transform target)
+    public virtual void SetTarget(Transform target)
     {
-        _target = target;
+        this.target = target;
     }
 
-    public void SetTarget(Vector3 target)
+    public virtual void SetTarget(Vector3 target)
     {
         _targetPosition = target;
     }
 
-    private void GetRandomClosePosition()
+    protected virtual void GetRandomClosePosition()
     {
-        var target = RandomNavSphere(transform.position, 2, -1);
+        Vector3 target = RandomNavSphere(transform.position, 2, -1);
         SetTarget(target);
     }
 
