@@ -147,7 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   _currentHealth: 5
-  _target: {fileID: 0}
+  target: {fileID: 0}
+  _targetPosition: {x: 0, y: 0, z: 0}
   _isEnabled: 1
   chaseTarget: 0
   _timerMax: 1
@@ -155,3 +156,4 @@ MonoBehaviour:
   _bulletVelocity: 25
   _damage: 1
   _shootTimerMax: 3
+  _FOV: 120
