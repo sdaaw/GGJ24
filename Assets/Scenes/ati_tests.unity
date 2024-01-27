@@ -365,28 +365,24 @@ MonoBehaviour:
   enemyWaves:
   - enemyAmount: 3
     waveEnemies:
-    - enemyPrefab: {fileID: 5407721913142841378, guid: 6da1b7a7670f61a458f7ed701254ef1b, type: 3}
-      spawnPos: {fileID: 584224186}
-    - enemyPrefab: {fileID: 5407721913142841378, guid: 6da1b7a7670f61a458f7ed701254ef1b, type: 3}
-      spawnPos: {fileID: 1028968019}
+    - {fileID: 5407721913142841378, guid: 6da1b7a7670f61a458f7ed701254ef1b, type: 3}
+    - {fileID: 5407721913142841378, guid: 195b57dc7ae0679418f109cb0f807ed6, type: 3}
+    waveSpawnPositions:
+    - {fileID: 584224186}
+    - {fileID: 1922767729}
+    - {fileID: 1739405954}
+    - {fileID: 1028968019}
     currentWaveEnemies: []
   - enemyAmount: 6
     waveEnemies:
-    - enemyPrefab: {fileID: 0}
-      spawnPos: {fileID: 0}
-    - enemyPrefab: {fileID: 0}
-      spawnPos: {fileID: 0}
-    currentWaveEnemies: []
-  - enemyAmount: 12
-    waveEnemies:
-    - enemyPrefab: {fileID: 0}
-      spawnPos: {fileID: 0}
-    - enemyPrefab: {fileID: 0}
-      spawnPos: {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    waveSpawnPositions: []
     currentWaveEnemies: []
   currentWave:
     enemyAmount: 0
     waveEnemies: []
+    waveSpawnPositions: []
     currentWaveEnemies: []
   nextWaveIndex: 0
 --- !u!4 &971966743

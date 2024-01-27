@@ -15,22 +15,20 @@ public class EnemyController : MonoBehaviour
             SpawnWave(enemyWaves[nextWaveIndex]);
             currentWave = enemyWaves[nextWaveIndex];
             nextWaveIndex += 1;
-           
         }
     }
-
 
     public void SpawnWave(EnemyWave ew)
     {
         for (int i = 0; i < ew.enemyAmount; i++)
         {
-            SpawnEnemy(ew.waveEnemies[Random.Range(0, ew.waveEnemies.Count - 1)], ew);
+            SpawnEnemy(ew.waveEnemies[Random.Range(0, ew.waveEnemies.Count)], ew);
         }
     }
 
-    public void SpawnEnemy(WaveEnemy enemy, EnemyWave wave)
+    public void SpawnEnemy(Enemy enemy, EnemyWave wave)
     {
-        var e = Instantiate(enemy.enemyPrefab, enemy.spawnPos);
+        var e = Instantiate(enemy, wave.waveSpawnPositions[Random.Range(0, wave.waveSpawnPositions.Count)]);
         e.SetTarget(FindFirstObjectByType<FPSController>().transform);
         wave.currentWaveEnemies.Add(e);
     }
@@ -51,13 +49,7 @@ public class EnemyController : MonoBehaviour
 public class EnemyWave
 {
     public int enemyAmount;
-    public List<WaveEnemy> waveEnemies = new List<WaveEnemy>();
+    public List<Enemy> waveEnemies = new List<Enemy>();
+    public List<Transform> waveSpawnPositions = new List<Transform>();
     public List<Enemy> currentWaveEnemies = new List<Enemy>();
-}
-
-[System.Serializable]
-public class WaveEnemy
-{
-    public Enemy enemyPrefab;
-    public Transform spawnPos;
 }
