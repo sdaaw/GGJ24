@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
+
     [SerializeField]
     private GameObject _playerPrefab;
 
@@ -20,19 +21,28 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
-
-
-
     public List<GameObject> EntitiesInWorld = new List<GameObject>();
+
+    public GameStateHandler StateHandler;
+
     void Start()
     {
+        StateHandler = GetComponent<GameStateHandler>();
+
 
         if (instance == null) { instance = this; }
 
-        player = Instantiate(_playerPrefab, spawnPosTransform.transform.position, Quaternion.identity);
-        SpawnSphereEntities(100);
     }
 
+    public void StartGame()
+    {
+        StateHandler.CurrentState = GameStateHandler.GameState.InPlay;
+        player = Instantiate(_playerPrefab, spawnPosTransform.transform.position, Quaternion.identity);
+        player.GetComponent<FPSController>().cameraObject = Camera.main.gameObject;
+        Camera.main.transform.parent = player.transform;
+        Camera.main.transform.localPosition = new(0, 0.5f, 0);
+        SpawnSphereEntities(100);
+    }
     public void SpawnSphereEntities(int count)
     {
         Vector3 pos = new();
