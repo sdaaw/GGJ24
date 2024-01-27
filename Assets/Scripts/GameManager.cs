@@ -35,16 +35,26 @@ public class GameManager : MonoBehaviour
 
         if (instance == null) { instance = this; }
 
+        if(StateHandler.startingScene == GameStateHandler.GameState.InPlay)
+        {
+            SpawnPlayer();
+        }
+
     }
 
     public void StartGame()
     {
         StateHandler.CurrentState = GameStateHandler.GameState.InPlay;
+        SpawnPlayer();
+        SpawnSphereEntities(_sphereSpawnCount);
+    }
+
+    public void SpawnPlayer()
+    {
         player = Instantiate(_playerPrefab, spawnPosTransform.transform.position, Quaternion.identity);
         player.GetComponent<FPSController>().cameraObject = Camera.main.gameObject;
         Camera.main.transform.parent = player.transform;
         Camera.main.transform.localPosition = new(0, 0.5f, 0);
-        SpawnSphereEntities(_sphereSpawnCount);
     }
 
     public void QuitGameToMenu()

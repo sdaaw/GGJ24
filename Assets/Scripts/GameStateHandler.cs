@@ -27,13 +27,12 @@ public class GameStateHandler : MonoBehaviour
     public GameState CurrentState { get; set; }
     private GameState _previousState { get; set; }
 
-    [SerializeField]
-    private GameState _startingState;
+    public GameState startingScene;
 
     void Start()
     {
         _previousState = GameState.None;
-        CurrentState = _startingState;
+        CurrentState = startingScene;
     }
 
     // Update is called once per frame
