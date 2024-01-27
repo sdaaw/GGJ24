@@ -26,4 +26,9 @@ public class Enemy : Entity
             _agent.SetDestination(_target.position);
         }
     }
+
+    public void SetTarget(Transform target)
+    {
+        _target = target;
+    }
 }
