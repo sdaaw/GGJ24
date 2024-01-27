@@ -214,11 +214,11 @@ public class FPSController : MonoBehaviour
         }
         _controller.Move(_meowment * Time.deltaTime * meowmentSpeed);
 
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+        /*if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
             float v = -3.0f;
             _pVelocity.y += Mathf.Sqrt(jumpForce * v * gravity);
-        }
+        }*/
         _pVelocity.y += gravity * Time.deltaTime;
         _controller.Move(_pVelocity * Time.deltaTime);
 

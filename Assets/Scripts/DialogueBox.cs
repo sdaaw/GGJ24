@@ -8,9 +8,6 @@ public class DialogueBox : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField]
-    private GameObject _dialogueBoxObject;
-
-    [SerializeField]
     private SpriteRenderer _characterPortraitSprite;
 
     [SerializeField]
@@ -22,7 +19,9 @@ public class DialogueBox : MonoBehaviour
 
     void Start()
     {
-        
+        textContent = _dialogueTextObject.text;
+        _dialogueTextObject.text = "";
+        DisplayText(textContent, 0.01f);
     }
 
     public void DisplayText(string text, float speed)
@@ -32,15 +31,20 @@ public class DialogueBox : MonoBehaviour
 
     IEnumerator DisplayTextVisual(string text, float speed)
     {
+
         yield return new WaitForSeconds(speed);
 
 
         _dialogueTextObject.text += text[_idx];
         _idx++;
 
-        if(_idx == textContent.Length) yield return null;
-
-        StartCoroutine(DisplayTextVisual(text, speed));
+        if (_idx >= text.Length)
+        {
+            yield return null;
+        } else
+        {
+            StartCoroutine(DisplayTextVisual(text, speed));
+        }
     }
 
     public void OpenDialogueBox()
