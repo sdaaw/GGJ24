@@ -54,9 +54,8 @@ public class Bullet : MonoBehaviour
             //its not a bullet
             if(other.gameObject.layer != 8)
             {
-                /*if (other.GetComponent<Stats>())
-                    other.GetComponent<Stats>().TakeDmg(dmg);*/
-                // deal damage
+                if (other.GetComponent<Entity>())
+                    other.GetComponent<Entity>().CurrentHealth -= dmg;
 
                 Destroy(gameObject);
             }

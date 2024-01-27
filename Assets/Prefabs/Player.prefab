@@ -231,6 +231,7 @@ MonoBehaviour:
   _aimbotAimSpeed: 30
   _shootCooldown: 0.1
   _shootParticle: {fileID: 5527684057906955414}
+  _bulletHole: {fileID: 3507626991924695779, guid: 9c751d090ef5c764d88f6322f8514815, type: 3}
   _dashPower: 40
   _dashDuration: 0.01
   _dashCooldown: 0.4

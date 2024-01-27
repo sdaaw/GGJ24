@@ -77,6 +77,9 @@ public class FPSController : MonoBehaviour
     [SerializeField]
     private ParticleSystem _shootParticle;
 
+    [SerializeField]
+    private GameObject _bulletHole;
+
     //private int _curveControlPoints;
 
     [SerializeField]
@@ -188,6 +191,10 @@ public class FPSController : MonoBehaviour
             if(hit.transform.tag == "entity")
             {
                 hit.transform.GetComponent<Entity>().CurrentHealth -= shootDamage;
+            }
+            else
+            {
+                Instantiate(_bulletHole, hit.point + (hit.normal * .01f), Quaternion.FromToRotation(Vector3.up, hit.normal));
             }
         }
     }
