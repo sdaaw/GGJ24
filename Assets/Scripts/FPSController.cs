@@ -74,6 +74,8 @@ public class FPSController : MonoBehaviour
     [SerializeField]
     private float _shootCooldown;
 
+    [SerializeField]
+    private ParticleSystem _shootParticle;
 
     //private int _curveControlPoints;
 
@@ -92,9 +94,6 @@ public class FPSController : MonoBehaviour
     [SerializeField]
     private Animator _animator;
 
-
-
-
     public float Fov
     {
         get
@@ -109,6 +108,7 @@ public class FPSController : MonoBehaviour
 
     void Start()
     {
+
         Camera.main.fieldOfView = _fov;
         _cameraPosition = cameraObject.transform.localPosition;
 
@@ -176,6 +176,10 @@ public class FPSController : MonoBehaviour
     {
         if (_isShootCooldown) return;
         RaycastHit hit;
+
+        _shootParticle.Play();
+
+        _animator.Play("ShootAnim");
 
         StartCoroutine(ShootCooldown());
         if(Physics.Raycast(cameraObject.transform.position, cameraObject.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
