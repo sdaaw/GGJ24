@@ -145,7 +145,7 @@ public class FPSController : MonoBehaviour
     {
         if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.Paused) return;
 
-        if(GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.BattlePrepare)
+        if(GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.BattlePrepare || GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.ChoosingJoke)
         {
             // TODO: disable gun in cinematic mode
             cameraObject.transform.position = Vector3.Lerp(cameraObject.transform.position, GameManager.instance.cameraCinematicPosition.position, _cinematicCameraTimer / 2);
@@ -167,7 +167,8 @@ public class FPSController : MonoBehaviour
     void LateUpdate()
     {
         if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.Paused || 
-            GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.BattlePrepare || freezeControls) return;
+            GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.BattlePrepare ||
+            GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.ChoosingJoke) return;
         LookInput();
     }
 
