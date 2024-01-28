@@ -25,6 +25,9 @@ public class ShootingEnemy : Enemy
     [SerializeField]
     private string _shootSound = "";
 
+    [SerializeField]
+    public bool hasRunAwayAnim = false;
+
     // [SerializeField]
     // private float _FOV = 90;
 
@@ -42,6 +45,11 @@ public class ShootingEnemy : Enemy
         base.Update();
 
         ShootLogic();
+
+        if(_animator != null && hasRunAwayAnim)
+        {
+            _animator.SetBool("RunAway", chaseTarget);
+        }
 
         //TODO: need to change this, so enemies can turn around while moving to show samuels art
         // transform.LookAt(target);

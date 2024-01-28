@@ -34,7 +34,7 @@ public class Entity : MonoBehaviour
 
     public bool hasDeathAnim;
     [SerializeField]
-    private Animator _animator;
+    protected Animator _animator;
 
     protected virtual void Start()
     {

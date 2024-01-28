@@ -196,6 +196,7 @@ MonoBehaviour:
   _damage: 1
   _shootTimerMax: 3
   _shootSound: EnemyGun
+  hasRunAwayAnim: 1
   Agent: {fileID: 0}
 --- !u!212 &1453462791433129580
 SpriteRenderer:
