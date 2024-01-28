@@ -100,6 +100,8 @@ public class FPSController : MonoBehaviour
     [SerializeField]
     private Animator _animator;
 
+    public bool freezeControls;
+
     public float Fov
     {
         get
@@ -152,6 +154,8 @@ public class FPSController : MonoBehaviour
             return;
         }
 
+        if (freezeControls) return;
+
         GetOtherInputs();
         MoveInputs();
 
@@ -163,7 +167,7 @@ public class FPSController : MonoBehaviour
     void LateUpdate()
     {
         if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.Paused || 
-            GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.BattlePrepare) return;
+            GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.BattlePrepare || freezeControls) return;
         LookInput();
     }
 

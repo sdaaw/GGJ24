@@ -23,7 +23,7 @@ public class DialogueBox : MonoBehaviour
     {
         None,
         InProgress,
-        Done,
+        Done
     }
 
     public DialogueBoxState state;
@@ -36,6 +36,8 @@ public class DialogueBox : MonoBehaviour
     public void DisplayText(string text, float speed)
     {
         //TODO: Fix dialogue cancelling eachother if the other one is still playing
+        if (state == DialogueBoxState.InProgress) return;
+
         gameObject.SetActive(true);
         _dialogueTextObject.text = "";
         _idx = 0;

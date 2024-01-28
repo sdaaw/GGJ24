@@ -28,6 +28,12 @@ public class DialogueManager : MonoBehaviour
         "Peak humour!"
     };
 
+    public readonly string[] PREPARE_DIALOGUES = new string[]
+    {
+        "That was.. something.. how about we start the show?",
+        "GET READY"
+    };
+
 
     public GameObject dialoguePanelObject;
 
@@ -55,6 +61,8 @@ public class DialogueManager : MonoBehaviour
 
     public int JokeCycleCount = 3;
 
+    private bool transitionDelayStarted;
+
     void Start()
     {
         if(instance == null) instance = this;
@@ -77,29 +85,38 @@ public class DialogueManager : MonoBehaviour
         if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.ChoosingJoke)
         {
             if (_chosenJoke == null) return;
-
-            if(_chosenJoke.Grade == Joke.JokeGrade.Bad)
-            {
-                _dialogueBox.DisplayText(BAD_JOKE_REACTIONS[Random.Range(0, BAD_JOKE_REACTIONS.Length)], 0.01f);
-            }
-            if (_chosenJoke.Grade == Joke.JokeGrade.Medium)
-            {
-                _dialogueBox.DisplayText(MEDIUM_JOKE_REACTIONS[Random.Range(0, MEDIUM_JOKE_REACTIONS.Length)], 0.01f);
-            }
-            if (_chosenJoke.Grade == Joke.JokeGrade.Best)
-            {
-                _dialogueBox.DisplayText(BEST_JOKE_REACTIONS[Random.Range(0, BEST_JOKE_REACTIONS.Length)], 0.01f);
-            }
-            jokesChosen++;
-            if(jokesChosen == JokeCycleCount)
-            {
-                GameManager.instance.StateHandler.CurrentState = GameStateHandler.GameState.BattlePrepare;
-            } else
-            {
-                GameManager.instance.StateHandler.CurrentState = GameStateHandler.GameState.GeneratingJokes;
-            }
-
+            HandleJokeChoosing();
         }
+        if(GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.BattlePrepare)
+        {
+            BattleBeginDialogueScene();
+        }
+    }
+
+    private void HandleJokeChoosing()
+    {
+        if (_chosenJoke.Grade == Joke.JokeGrade.Bad)
+        {
+            _dialogueBox.DisplayText(BAD_JOKE_REACTIONS[Random.Range(0, BAD_JOKE_REACTIONS.Length)], 0.01f);
+        }
+        if (_chosenJoke.Grade == Joke.JokeGrade.Medium)
+        {
+            _dialogueBox.DisplayText(MEDIUM_JOKE_REACTIONS[Random.Range(0, MEDIUM_JOKE_REACTIONS.Length)], 0.01f);
+        }
+        if (_chosenJoke.Grade == Joke.JokeGrade.Best)
+        {
+            _dialogueBox.DisplayText(BEST_JOKE_REACTIONS[Random.Range(0, BEST_JOKE_REACTIONS.Length)], 0.01f);
+        }
+        jokesChosen++;
+        if (jokesChosen == JokeCycleCount)
+        {
+            GameManager.instance.StateHandler.CurrentState = GameStateHandler.GameState.BattlePrepare;
+        }
+        else
+        {
+            GameManager.instance.StateHandler.CurrentState = GameStateHandler.GameState.GeneratingJokes;
+        }
+
     }
 
     private void MakeJokes()
@@ -154,12 +171,35 @@ public class DialogueManager : MonoBehaviour
             if (_idx == INTRO_DIALOGUES.Length)
             {
                 introSceneRunning = false;
+                _idx = 0;
                 GameManager.instance.StateHandler.CurrentState = GameStateHandler.GameState.GeneratingJokes;
                 return;
             }
             _dialogueBox.DisplayText(INTRO_DIALOGUES[_idx], 0.01f);
             _idx++;
         }
+    }
+
+    public void BattleBeginDialogueScene()
+    {
+        if (_dialogueBox.state == DialogueBox.DialogueBoxState.Done)
+        {
+            if (_idx == INTRO_DIALOGUES.Length)
+            {
+                _idx = 0;
+                GameManager.instance.StateHandler.CurrentState = GameStateHandler.GameState.InPlay;
+                return;
+            }
+            _dialogueBox.DisplayText(PREPARE_DIALOGUES[_idx], 0.02f);
+            _idx++;
+        }
+    }
+
+    IEnumerator TransitionDelay()
+    {
+        transitionDelayStarted = true;
+        yield return new WaitForSeconds(0.5f);
+        GameManager.instance.StateHandler.CurrentState = GameStateHandler.GameState.BattlePrepare;
     }
 }
 
