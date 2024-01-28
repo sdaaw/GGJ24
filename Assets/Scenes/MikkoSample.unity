@@ -38086,7 +38086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyWaves:
-  - enemyAmount: 3
+  - enemyAmount: 6
     waveEnemies:
     - {fileID: 7017218462112100367, guid: 6da1b7a7670f61a458f7ed701254ef1b, type: 3}
     waveSpawnPositions:
@@ -38095,7 +38095,16 @@ MonoBehaviour:
     - {fileID: 1185246656}
     - {fileID: 383187121}
     currentWaveEnemies: []
-  - enemyAmount: 6
+  - enemyAmount: 12
+    waveEnemies:
+    - {fileID: 7017218462112100367, guid: 6da1b7a7670f61a458f7ed701254ef1b, type: 3}
+    waveSpawnPositions:
+    - {fileID: 986054138}
+    - {fileID: 1828929346}
+    - {fileID: 1185246656}
+    - {fileID: 383187121}
+    currentWaveEnemies: []
+  - enemyAmount: 12
     waveEnemies:
     - {fileID: 7017218462112100367, guid: 6da1b7a7670f61a458f7ed701254ef1b, type: 3}
     waveSpawnPositions:
@@ -38105,9 +38114,11 @@ MonoBehaviour:
     - {fileID: 383187121}
     currentWaveEnemies: []
   currentWave:
-    enemyAmount: 0
-    waveEnemies: []
-    waveSpawnPositions: []
+    enemyAmount: 1
+    waveEnemies:
+    - {fileID: 5394728796521201838, guid: 861419a616e500349a6b759926ce1171, type: 3}
+    waveSpawnPositions:
+    - {fileID: 986054138}
     currentWaveEnemies: []
   nextWaveIndex: 0
   _enemyRemainingText: {fileID: 1357739420}
