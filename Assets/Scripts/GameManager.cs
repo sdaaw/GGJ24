@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
 
     public bool WaveStarted;
 
+    public int waveAmount = 3;
+
     void Start()
     {
         StateHandler = GetComponent<GameStateHandler>();

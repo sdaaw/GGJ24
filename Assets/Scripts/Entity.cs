@@ -77,6 +77,7 @@ public class Entity : MonoBehaviour
         }
         else if(GetComponent<FPSController>())
         {
+            Cursor.lockState = CursorLockMode.None;
             // TODO: player died here
 
             GameManager.instance.StateHandler.CurrentState = GameStateHandler.GameState.PlayerDeath;

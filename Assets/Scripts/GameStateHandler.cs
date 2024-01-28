@@ -119,6 +119,11 @@ public class GameStateHandler : MonoBehaviour
             }
             case GameState.WaveDefeated:
             {
+                if (GameManager.instance.enemyController.nextWaveIndex > GameManager.instance.waveAmount)
+                {
+                    Application.LoadLevel("EndScene");
+                }
+
                 GameManager.instance.WaveStarted = false;
                 GameManager.instance.enemyController.currentWave = null;
                 GameManager.instance.player.GetComponent<FPSController>().viewmodelObject.SetActive(false);
