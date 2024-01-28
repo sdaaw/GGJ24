@@ -110,6 +110,7 @@ public class GameStateHandler : MonoBehaviour
                 GameManager.instance.WaveStarted = false;
                 GameManager.instance.enemyController.currentWave = null;
                 GameManager.instance.player.GetComponent<FPSController>().viewmodelObject.SetActive(false);
+                GameManager.instance.DespawnPlayer();
                 CurrentState = GameState.GeneratingJokes;
                 break;
             }
