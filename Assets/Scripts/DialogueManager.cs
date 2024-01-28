@@ -44,6 +44,12 @@ public class DialogueManager : MonoBehaviour
 
     public static DialogueManager instance;
 
+    private Joke _chosenJoke;
+
+    private int jokesChosen = 0;
+
+    public int JokeCycleCount = 3;
+
     void Start()
     {
         if(instance == null) instance = this;
@@ -62,11 +68,38 @@ public class DialogueManager : MonoBehaviour
         }
         if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.ChoosingJoke)
         {
+            if (_chosenJoke == null) return;
+
+            if(_chosenJoke.Grade == Joke.JokeGrade.Bad)
+            {
+                _dialogueBox.DisplayText("B A D", 0.05f);
+            }
+            if (_chosenJoke.Grade == Joke.JokeGrade.Medium)
+            {
+                _dialogueBox.DisplayText("M E D I U M", 0.05f);
+            }
+            if (_chosenJoke.Grade == Joke.JokeGrade.Best)
+            {
+                _dialogueBox.DisplayText("B E S T", 0.05f);
+            }
+            jokesChosen++;
+            if(jokesChosen == JokeCycleCount)
+            {
+                GameManager.instance.StateHandler.CurrentState = GameStateHandler.GameState.BattlePrepare;
+            } else
+            {
+                GameManager.instance.StateHandler.CurrentState = GameStateHandler.GameState.GeneratingJokes;
+            }
+
         }
     }
 
     private void MakeJokes()
     {
+        _chosenJoke = null;
+        _currentBadJokes = new();
+        _currentMediumJokes = new();
+        _currentBestJokes = new();
         for(int i = 0; i < 3; i++)
         {
             _currentBadJokes.Add(new Joke(Joke.JokeGrade.Bad));
@@ -88,11 +121,12 @@ public class DialogueManager : MonoBehaviour
     public void ChooseJoke(Joke joke)
     {
         GameManager.instance.potentialReward += joke.moneyReward;
-
+        _chosenJoke = joke;
     }
 
     public void OrganizeJokesForRound()
     {
+        _thisRoundJokes = new();
         for (int i = 0; i < 3; i++)
         {
             _thisRoundJokes.Add(_currentBadJokes[Random.Range(0, _currentBadJokes.Count)]);

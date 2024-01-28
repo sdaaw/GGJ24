@@ -14,7 +14,8 @@ public class GameStateHandler : MonoBehaviour
         InPlay,
         Paused,
         GeneratingJokes,
-        ChoosingJoke
+        ChoosingJoke,
+        BattlePrepare
     }
 
     [SerializeField]
