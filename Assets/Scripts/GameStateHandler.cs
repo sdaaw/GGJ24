@@ -52,6 +52,12 @@ public class GameStateHandler : MonoBehaviour
         {
             CurrentState = (CurrentState == GameState.Paused) ? GameState.InPlay : GameState.Paused;
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            CurrentState = (CurrentState == GameState.BattlePrepare) ? GameState.InPlay : GameState.BattlePrepare;
+            FindFirstObjectByType<FPSController>().ResetCameraPosition();
+        }
     }
 
     public void CheckStates()
@@ -80,9 +86,9 @@ public class GameStateHandler : MonoBehaviour
                 break;
             }
         }
-        _pausedCanvasParent.SetActive(CurrentState == GameState.Paused);
-        _mainMenuCanvasParent.SetActive(CurrentState == GameState.InMenu);
-        _jokeChoosingPanel.SetActive(CurrentState == GameState.ChoosingJoke);
+        //_pausedCanvasParent.SetActive(CurrentState == GameState.Paused);
+        //_mainMenuCanvasParent.SetActive(CurrentState == GameState.InMenu);
+        //_jokeChoosingPanel.SetActive(CurrentState == GameState.ChoosingJoke);
     }
 
     //this is for menu button XD

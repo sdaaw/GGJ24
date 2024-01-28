@@ -6,6 +6,7 @@ TagManager:
   tags:
   - entity
   - Cover
+  - cinematicCamera
   layers:
   - Default
   - TransparentFX

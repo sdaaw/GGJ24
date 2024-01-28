@@ -18,6 +18,10 @@ public class FPSController : MonoBehaviour
     [SerializeField]
     public GameObject cameraObject;
 
+    public bool cinematicCameraMode;
+
+    private float _cinematicCameraTimer;
+
     [SerializeField]
     private bool _invertMouse;
 
@@ -124,12 +128,31 @@ public class FPSController : MonoBehaviour
         _viewmodelObject.transform.parent = cameraObject.transform;
 
         _animator.speed = 0.5f;
+
+
+        // GameManager.cameraCinematicPosition = GameObject.FindGameObjectWithTag("cinematicCamera").transform;
+    }
+
+    public void ResetCameraPosition()
+    {
+        cameraObject.transform.localPosition = _cameraPosition;
+        _cinematicCameraTimer = 0;
     }
 
 
     void Update()
     {
         if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.Paused) return;
+
+        if(GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.BattlePrepare)
+        {
+            // TODO: disable gun in cinematic mode
+            cameraObject.transform.position = Vector3.Lerp(cameraObject.transform.position, GameManager.instance.cameraCinematicPosition.position, _cinematicCameraTimer / 2);
+            _cinematicCameraTimer += Time.deltaTime;
+            cameraObject.transform.LookAt(GameManager.instance.cameraCinematicLookAtPosition);
+            return;
+        }
+
         GetOtherInputs();
         MoveInputs();
 
@@ -140,7 +163,8 @@ public class FPSController : MonoBehaviour
     }
     void LateUpdate()
     {
-        if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.Paused) return;
+        if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.Paused || 
+            GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.BattlePrepare) return;
         LookInput();
     }
 

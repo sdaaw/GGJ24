@@ -25,6 +25,12 @@ public class GameManager : MonoBehaviour
 
     public GameStateHandler StateHandler;
 
+    [SerializeField]
+    public Transform cameraCinematicPosition;
+
+    [SerializeField]
+    public Transform cameraCinematicLookAtPosition;
+
 
     public int MoneyReward;
 
@@ -53,7 +59,7 @@ public class GameManager : MonoBehaviour
         player = Instantiate(_playerPrefab, spawnPosTransform.transform.position, spawnPosTransform.transform.rotation);
         player.GetComponent<FPSController>().cameraObject = Camera.main.gameObject;
         Camera.main.transform.parent = player.transform;
-        Camera.main.transform.localPosition = new(0, 0.5f, 0);
+        Camera.main.transform.localPosition = new Vector3(0, 0.5f, 0);
     }
 
     public void QuitGameToMenu()
@@ -65,7 +71,7 @@ public class GameManager : MonoBehaviour
                 Destroy(EntitiesInWorld[i]);
             }
         }
-        EntitiesInWorld = new();
+        EntitiesInWorld = new List<GameObject>();
         StateHandler.CurrentState = GameStateHandler.GameState.InMenu;
 
         Camera.main.transform.parent = null;
