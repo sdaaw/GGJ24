@@ -87,6 +87,7 @@ MonoBehaviour:
   _bulletVelocity: 15
   _damage: 5
   _shootTimerMax: 2
+  _shootSound: PlasmaGun
   Agent: {fileID: 0}
   _teleportTimerMax: 4
   _attack2TimerMax: 1

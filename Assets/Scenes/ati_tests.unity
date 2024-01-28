@@ -470,7 +470,7 @@ MonoBehaviour:
   _jokeChoosingPanel: {fileID: 0}
   _arenaHud: {fileID: 0}
   CurrentState: 0
-  startingScene: 2
+  startingScene: 1
   _audioSource: {fileID: 0}
 --- !u!114 &262468806
 MonoBehaviour:
