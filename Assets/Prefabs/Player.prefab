@@ -240,6 +240,7 @@ MonoBehaviour:
   _isDashing: 0
   viewmodelObject: {fileID: 7952682555267473509}
   _animator: {fileID: 1593262250704279399}
+  freezeControls: 0
 --- !u!95 &7096573779249896840
 Animator:
   serializedVersion: 7
@@ -279,7 +280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2679920409340425722
 Transform:
   m_ObjectHideFlags: 0
