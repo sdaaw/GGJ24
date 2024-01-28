@@ -81,7 +81,7 @@ public class ShootingEnemy : Enemy
     IEnumerator muzzleFlash()
     {
         _muzzleFlash.SetActive(true);
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.1f);
         _muzzleFlash.SetActive(false);
     }
 
