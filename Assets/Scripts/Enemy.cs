@@ -31,6 +31,7 @@ public class Enemy : Entity
     {
         if(_isEnabled)
         {
+            if (target == null) return;
             if (chaseTarget)
             {
                 _agent.SetDestination(target.position);
