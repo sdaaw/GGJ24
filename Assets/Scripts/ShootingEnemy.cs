@@ -55,8 +55,11 @@ public class ShootingEnemy : Enemy
 
         if (_shootTimer >= _shootTimerMax)
         {
-            Shoot();
-            _shootTimer = 0;
+            if (!chaseTarget)
+            {
+                Shoot();
+                _shootTimer = 0;
+            }
         }
     }
 
