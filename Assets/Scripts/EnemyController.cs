@@ -39,6 +39,7 @@ public class EnemyController : MonoBehaviour
     public void SpawnEnemy(Enemy enemy, EnemyWave wave)
     {
         var e = Instantiate(enemy, wave.waveSpawnPositions[Random.Range(0, wave.waveSpawnPositions.Count)].position, Quaternion.identity);
+        e.CurrentHealth -= GameManager.instance.MoneyReward;
         e.SetTarget(FindFirstObjectByType<FPSController>().transform);
         wave.currentWaveEnemies.Add(e);
     }
