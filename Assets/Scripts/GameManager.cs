@@ -34,10 +34,14 @@ public class GameManager : MonoBehaviour
 
     public int MoneyReward;
 
+    public EnemyController EnemyController;
+
+    public int waveIndex;
+
     void Start()
     {
         StateHandler = GetComponent<GameStateHandler>();
-
+        EnemyController = GetComponent<EnemyController>();  
 
         if (instance == null) { instance = this; }
 
@@ -45,6 +49,11 @@ public class GameManager : MonoBehaviour
         {
             SpawnPlayer();
         }
+    }
+
+    public Vector3 GetSpawnPos()
+    {
+        return spawnPosTransform.transform.position;
     }
 
     public void StartGame()

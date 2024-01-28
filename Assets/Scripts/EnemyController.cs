@@ -14,13 +14,13 @@ public class EnemyController : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        /*if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             // TODO: needs last wave logic
             SpawnWave(enemyWaves[nextWaveIndex]);
             currentWave = enemyWaves[nextWaveIndex];
             nextWaveIndex++;
-        }
+        }*/
 
         if (_enemyRemainingText != null && currentWave != null)
         {

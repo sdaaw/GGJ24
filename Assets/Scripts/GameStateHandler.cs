@@ -71,9 +71,14 @@ public class GameStateHandler : MonoBehaviour
             {
                 break;
             }
+
             case GameState.InPlay:
             {
+                GameManager.instance.player.GetComponent<FPSController>().freezeControls = false;
                 GameManager.instance.player.GetComponent<FPSController>().viewmodelObject.SetActive(true);
+
+                GameManager.instance.EnemyController.SpawnWave();
+
                 Cursor.lockState = CursorLockMode.Locked;
                 break;
             }
