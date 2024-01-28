@@ -10,8 +10,8 @@ public class DialogueManager : MonoBehaviour
 
     public readonly string[] INTRO_DIALOGUES = new string[]
     {
-        "bald people are allowed to only speak with a supervisor",
-        "nothing else, thank you"
+        "This is a gameshow about making the best your mom joke in the world!",
+        "Choose the best joke and win a money reward!"
     };
 
     public readonly string[] BAD_JOKE_REACTIONS = new string[]

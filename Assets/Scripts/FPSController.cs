@@ -147,7 +147,7 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.Paused) return;
+        if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.Paused || GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.PlayerDeath) return;
 
         if(GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.BattlePrepare || GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.ChoosingJoke)
         {
@@ -172,7 +172,8 @@ public class FPSController : MonoBehaviour
     {
         if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.Paused || 
             GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.BattlePrepare ||
-            GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.ChoosingJoke) return;
+            GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.ChoosingJoke ||
+            GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.PlayerDeath) return;
         LookInput();
     }
 

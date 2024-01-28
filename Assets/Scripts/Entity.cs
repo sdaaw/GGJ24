@@ -78,6 +78,8 @@ public class Entity : MonoBehaviour
         else if(GetComponent<FPSController>())
         {
             // TODO: player died here
+
+            GameManager.instance.StateHandler.CurrentState = GameStateHandler.GameState.PlayerDeath;
             StartCoroutine(ReturnToMainMenuOnDeath());
         }
         else
