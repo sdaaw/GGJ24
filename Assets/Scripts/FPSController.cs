@@ -95,8 +95,7 @@ public class FPSController : MonoBehaviour
 
     private Vector3 _dashPosition;
 
-    [SerializeField]
-    private GameObject _viewmodelObject;
+    public GameObject viewmodelObject;
 
     [SerializeField]
     private Animator _animator;
@@ -125,7 +124,7 @@ public class FPSController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
 
-        _viewmodelObject.transform.parent = cameraObject.transform;
+        viewmodelObject.transform.parent = cameraObject.transform;
 
         _animator.speed = 0.5f;
 
@@ -293,10 +292,10 @@ public class FPSController : MonoBehaviour
             cameraObject.transform.position.z
             );
 
-        _viewmodelObject.transform.position = new Vector3(
-            _viewmodelObject.transform.position.x,
-            _viewmodelObject.transform.position.y + Mathf.Sin(_timer / _bobSpeed) * _bobAmplitude,
-            _viewmodelObject.transform.position.z
+        viewmodelObject.transform.position = new Vector3(
+            viewmodelObject.transform.position.x,
+            viewmodelObject.transform.position.y + Mathf.Sin(_timer / _bobSpeed) * _bobAmplitude,
+            viewmodelObject.transform.position.z
             );
     }
     private void CancelBob()

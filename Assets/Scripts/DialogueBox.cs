@@ -17,6 +17,8 @@ public class DialogueBox : MonoBehaviour
 
     private int _idx;
 
+    private List<string> dialogueQueue;
+
     public enum DialogueBoxState
     {
         None,
@@ -33,6 +35,7 @@ public class DialogueBox : MonoBehaviour
 
     public void DisplayText(string text, float speed)
     {
+        //TODO: Fix dialogue cancelling eachother if the other one is still playing
         gameObject.SetActive(true);
         _dialogueTextObject.text = "";
         _idx = 0;
@@ -50,7 +53,7 @@ public class DialogueBox : MonoBehaviour
 
         if (_idx >= text.Length)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.5f);
             gameObject.SetActive(false);
             state = DialogueBoxState.Done;
             yield return null;
