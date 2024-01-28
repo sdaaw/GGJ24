@@ -700,7 +700,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6848058772124647492, guid: 899f38fd23888744d97d6955bf55fba4, type: 3}
   m_PrefabInstance: {fileID: 3932114424327427195}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304579470}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe44041ca5dc4a14da5410ad596fc671, type: 3}
@@ -814,30 +814,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 067826bc60cf58540b2fc40181004090, type: 3}
   m_PrefabInstance: {fileID: 293276278}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &304579470 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2537258904842144127, guid: 899f38fd23888744d97d6955bf55fba4, type: 3}
-  m_PrefabInstance: {fileID: 3932114424327427195}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &304579473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304579470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0870b0c88e0f23b488a3ede247e3d94a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dialoguePanelObject: {fileID: 421405295}
-  introSceneRunning: 0
-  _jokeButtons:
-  - {fileID: 1706782277}
-  - {fileID: 1792104047}
-  - {fileID: 2025648024}
-  JokeCycleCount: 3
 --- !u!1 &338712371
 GameObject:
   m_ObjectHideFlags: 0
@@ -6436,13 +6412,26 @@ PrefabInstance:
       propertyPath: _mainMenuCanvasParent
       value: 
       objectReference: {fileID: 2051557970}
+    - target: {fileID: 9203561940793715813, guid: 899f38fd23888744d97d6955bf55fba4, type: 3}
+      propertyPath: _dialoguePanelObject
+      value: 
+      objectReference: {fileID: 421405295}
+    - target: {fileID: 9203561940793715813, guid: 899f38fd23888744d97d6955bf55fba4, type: 3}
+      propertyPath: '_jokeButtons.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1706782277}
+    - target: {fileID: 9203561940793715813, guid: 899f38fd23888744d97d6955bf55fba4, type: 3}
+      propertyPath: '_jokeButtons.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1792104047}
+    - target: {fileID: 9203561940793715813, guid: 899f38fd23888744d97d6955bf55fba4, type: 3}
+      propertyPath: '_jokeButtons.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2025648024}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2537258904842144127, guid: 899f38fd23888744d97d6955bf55fba4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 304579473}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 899f38fd23888744d97d6955bf55fba4, type: 3}
 --- !u!1001 &4919393039831883509
 PrefabInstance:
@@ -6476,10 +6465,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4392218841719964663, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4916051175980258675, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
       propertyPath: m_text
       value: 
@@ -6488,10 +6473,6 @@ PrefabInstance:
       propertyPath: textObject
       value: 
       objectReference: {fileID: 610699364}
-    - target: {fileID: 7805990918573368050, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8215490462683714033, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

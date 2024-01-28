@@ -201,8 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Yo mama is great at multitasking, but she'll never be able to juggle two
-    balls at once \u2013 only one ball (the other is too big)."
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 34a4d1357cc56914bb6700d13c2bd9b7, type: 2}
   m_sharedMaterial: {fileID: -2637342015764070420, guid: 34a4d1357cc56914bb6700d13c2bd9b7, type: 2}
@@ -546,7 +545,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1650308689743032145}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8434721532653320796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba05751269e16e043a2e019c923f3095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textObject: {fileID: 0}
+  textObject: {fileID: 3830320745448923859}
 --- !u!1 &3293785004372138026
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8363298592820016276
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1781,7 +1792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba05751269e16e043a2e019c923f3095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textObject: {fileID: 0}
+  textObject: {fileID: 90794624591727422}
 --- !u!1 &5429679977036965152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,8 +1858,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Yo mama is great at multitasking, but she'll never be able to juggle two
-    balls at once \u2013 only one ball (the other is too big)."
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 34a4d1357cc56914bb6700d13c2bd9b7, type: 2}
   m_sharedMaterial: {fileID: -2637342015764070420, guid: 34a4d1357cc56914bb6700d13c2bd9b7, type: 2}
@@ -2131,7 +2141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba05751269e16e043a2e019c923f3095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textObject: {fileID: 0}
+  textObject: {fileID: 4916051175980258675}
 --- !u!1 &7959032644641914464
 GameObject:
   m_ObjectHideFlags: 0
@@ -2333,8 +2343,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Yo mama is great at multitasking, but she'll never be able to juggle two
-    balls at once \u2013 only one ball (the other is too big)."
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 34a4d1357cc56914bb6700d13c2bd9b7, type: 2}
   m_sharedMaterial: {fileID: -2637342015764070420, guid: 34a4d1357cc56914bb6700d13c2bd9b7, type: 2}
