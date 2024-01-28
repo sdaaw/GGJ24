@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
 
     public GameStateHandler StateHandler;
 
-    private int _sphereSpawnCount;
 
+    public int potentialReward;
 
     void Start()
     {
@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
     {
         StateHandler.CurrentState = GameStateHandler.GameState.InPlay;
         SpawnPlayer();
-        SpawnSphereEntities(_sphereSpawnCount);
     }
 
     public void SpawnPlayer()
@@ -75,16 +74,5 @@ public class GameManager : MonoBehaviour
 
         Destroy(player);
         player = null;
-    }
-
-    public void SpawnSphereEntities(int count)
-    {
-        Vector3 pos = new();
-        for(int i = 0; i < count; i++) 
-        {
-            pos = new Vector3(Random.Range(-20, 20), Random.Range(3, 10), Random.Range(-20, 20));
-            GameObject s = Instantiate(sphere, pos, Quaternion.identity);
-            EntitiesInWorld.Add(s);
-        }
     }
 }
