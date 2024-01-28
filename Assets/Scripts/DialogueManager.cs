@@ -116,6 +116,7 @@ public class DialogueManager : MonoBehaviour
         }
         if (_chosenJoke.Grade == Joke.JokeGrade.Best)
         {
+            
             _dialogueBox.DisplayText(BEST_JOKE_REACTIONS[Random.Range(0, BEST_JOKE_REACTIONS.Length)], 0.01f);
             
         }
