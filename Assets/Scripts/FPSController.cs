@@ -200,7 +200,7 @@ public class FPSController : MonoBehaviour
 
         _isDashing = true;
         _dashPosition = transform.position + (direction * _dashPower);
-
+        SoundManager.PlayASource("Dash");
         StartCoroutine(DashCooldown());
     }
 
@@ -212,6 +212,8 @@ public class FPSController : MonoBehaviour
         _shootParticle.Play();
 
         _animator.Play("ShootAnim");
+
+        SoundManager.PlayASource("GunShot");
 
         StartCoroutine(ShootCooldown());
         if(Physics.Raycast(cameraObject.transform.position, cameraObject.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
