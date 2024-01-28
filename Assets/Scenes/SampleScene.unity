@@ -832,11 +832,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialoguePanelObject: {fileID: 421405295}
-  introSceneRunning: 1
+  introSceneRunning: 0
   _jokeButtons:
   - {fileID: 1706782277}
   - {fileID: 1792104047}
   - {fileID: 2025648024}
+  JokeCycleCount: 3
 --- !u!1 &338712371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,6 +1065,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375925199}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &420059514 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 90794624591727422, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+  m_PrefabInstance: {fileID: 4919393039831883509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &421405295 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4392218841719964663, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
@@ -1716,6 +1728,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567303366}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &610699364 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4916051175980258675, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+  m_PrefabInstance: {fileID: 4919393039831883509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &632311809
 GameObject:
   m_ObjectHideFlags: 0
@@ -5954,6 +5977,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5726622663351582516, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
   m_PrefabInstance: {fileID: 4919393039831883509}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2061825742 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3830320745448923859, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+  m_PrefabInstance: {fileID: 4919393039831883509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2087519632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6426,6 +6460,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 272997680}
+    - target: {fileID: 1902769541811285323, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: textObject
+      value: 
+      objectReference: {fileID: 420059514}
     - target: {fileID: 3410477171903431530, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6446,10 +6484,30 @@ PrefabInstance:
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7378396452354623296, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: textObject
+      value: 
+      objectReference: {fileID: 610699364}
     - target: {fileID: 7805990918573368050, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8215490462683714033, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8215490462683714033, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8215490462683714033, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434721532653320796, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: textObject
+      value: 
+      objectReference: {fileID: 2061825742}
     - target: {fileID: 8464887987229489258, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
       propertyPath: m_Pivot.x
       value: 0

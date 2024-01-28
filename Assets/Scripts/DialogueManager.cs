@@ -120,7 +120,7 @@ public class DialogueManager : MonoBehaviour
 
     public void ChooseJoke(Joke joke)
     {
-        GameManager.instance.potentialReward += joke.moneyReward;
+        GameManager.instance.MoneyReward += joke.moneyReward;
         _chosenJoke = joke;
     }
 

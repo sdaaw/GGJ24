@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public GameStateHandler StateHandler;
 
 
-    public int potentialReward;
+    public int MoneyReward;
 
     void Start()
     {
