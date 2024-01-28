@@ -22,6 +22,9 @@ public class ShootingEnemy : Enemy
     [SerializeField]
     private float _shootTimerMax;
 
+    [SerializeField]
+    private string _shootSound = "";
+
     // [SerializeField]
     // private float _FOV = 90;
 
@@ -61,6 +64,12 @@ public class ShootingEnemy : Enemy
     {
         GameObject bullet = Instantiate(_bullet, transform.position + transform.forward, Quaternion.identity);
         bullet.GetComponent<Bullet>().Activate(_bulletVelocity, transform.forward, transform, _damage);
+
+        if(_shootSound != "")
+        {
+            SoundManager.PlayASource(_shootSound);
+        }
+
         if (_muzzleFlash != null)
         {
             StartCoroutine(muzzleFlash());

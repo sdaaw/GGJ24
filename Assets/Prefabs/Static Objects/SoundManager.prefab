@@ -49,3 +49,11 @@ MonoBehaviour:
     aName: Dash
   - aSource: {fileID: 5047157573454359616, guid: 6fc2b1b8e472c0740a7003de6eabcfd0, type: 3}
     aName: GunShot
+  - aSource: {fileID: 3748587416547062156, guid: 85af03ae5c9e5bc43be616e3c6b6f2f1, type: 3}
+    aName: Death
+  - aSource: {fileID: 8591351328191383273, guid: 729fe3497108c47408e837ccd8cd94c6, type: 3}
+    aName: Explosion
+  - aSource: {fileID: 6187241867834851873, guid: 1eea7e9ed76d081428a8a95aaf9c17bc, type: 3}
+    aName: PlasmaGun
+  - aSource: {fileID: 6042878651875691360, guid: 1e68cfa1f008c4748a48c296414a0c1c, type: 3}
+    aName: EnemyGun
