@@ -17,7 +17,8 @@ public class GameStateHandler : MonoBehaviour
         GeneratingJokes,
         ChoosingJoke,
         BattlePrepare,
-        WaveDefeated
+        WaveDefeated,
+        PlayerDeath
     }
 
     [SerializeField]
@@ -32,6 +33,9 @@ public class GameStateHandler : MonoBehaviour
     [SerializeField]
     private GameObject _inPlayPanel;
 
+    [SerializeField]
+    private GameObject _deathPanel;
+
     public GameState CurrentState;
     private GameState _previousState { get; set; }
 
@@ -39,6 +43,8 @@ public class GameStateHandler : MonoBehaviour
 
     [SerializeField]
     private AudioSource _audioSource;
+
+    private bool _quizbgmPlayed;
 
     void Start()
     {
@@ -93,12 +99,15 @@ public class GameStateHandler : MonoBehaviour
             }
             case GameState.ChoosingJoke:
             {
-                SoundManager.PlayASource("quizbgm");
+                _audioSource.Stop();
+                if (!_quizbgmPlayed) SoundManager.PlayASource("quizbgm");
+                _quizbgmPlayed = true;
                 Cursor.lockState = CursorLockMode.None;
                 break;
             }
             case GameState.BattlePrepare:
             {
+                _quizbgmPlayed = false;
                 GameManager.instance.SpawnPlayer();
                 GameManager.instance.player.GetComponent<FPSController>().viewmodelObject.SetActive(false);
                 break;
@@ -117,11 +126,17 @@ public class GameStateHandler : MonoBehaviour
                 CurrentState = GameState.GeneratingJokes;
                 break;
             }
+            case GameState.PlayerDeath:
+            {
+                break;
+            }
         }
         _pausedCanvasParent.SetActive(CurrentState == GameState.Paused);
         _mainMenuCanvasParent.SetActive(CurrentState == GameState.InMenu);
         _jokeChoosingPanel.SetActive(CurrentState == GameState.ChoosingJoke);
         _inPlayPanel.SetActive(CurrentState == GameState.InPlay);
+        _deathPanel.SetActive(CurrentState == GameState.PlayerDeath);
+
     }
 
     //this is for menu button XD
