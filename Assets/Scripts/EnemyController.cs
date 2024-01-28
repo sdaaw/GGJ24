@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
 {
     public List<EnemyWave> enemyWaves = new List<EnemyWave>();
     public EnemyWave currentWave;
-    public int nextWaveIndex = 0;
+    // public int nextWaveIndex = 0;
 
     [SerializeField]
     private TMP_Text _enemyRemainingText;

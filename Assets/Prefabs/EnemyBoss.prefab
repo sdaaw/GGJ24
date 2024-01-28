@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  _currentHealth: 1000
+  _currentHealth: 200
   hasDeathAnim: 0
   _animator: {fileID: 0}
   target: {fileID: 0}

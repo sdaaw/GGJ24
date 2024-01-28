@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameStateHandler : MonoBehaviour
@@ -34,6 +35,9 @@ public class GameStateHandler : MonoBehaviour
     private GameObject _inPlayPanel;
 
     [SerializeField]
+    private TMP_Text _playerInfo;
+
+    [SerializeField]
     private GameObject _deathPanel;
 
     public GameState CurrentState;
@@ -48,6 +52,7 @@ public class GameStateHandler : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
         _previousState = GameState.None;
         CurrentState = startingScene;
     }
@@ -55,6 +60,12 @@ public class GameStateHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_playerInfo != null && CurrentState == GameState.InPlay)
+        {
+            _playerInfo.text = $"HP: { GameManager.instance.player.GetComponent<Entity>().CurrentHealth }\n" +
+                        $"Power: { GameManager.instance.MoneyReward }";
+        }
+
         CheckStates();
         /*if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -89,9 +100,6 @@ public class GameStateHandler : MonoBehaviour
 
                 _audioSource.Play();
 
-                // TODO: hp text
-
-
                 Cursor.lockState = CursorLockMode.Locked;
                 break;
             }
@@ -122,7 +130,8 @@ public class GameStateHandler : MonoBehaviour
             }
             case GameState.WaveDefeated:
             {
-                if (GameManager.instance.enemyController.nextWaveIndex > GameManager.instance.waveAmount)
+                // Debug.Log(GameManager.instance.enemyController.nextWaveIndex);
+                if (GameManager.instance.waveIndex >= GameManager.instance.waveAmount)
                 {
                     Application.LoadLevel("EndScene");
                 }

@@ -229,7 +229,7 @@ MonoBehaviour:
   _bobSpeed: 0.1
   _bobAmplitude: 0.002
   IsMoving: 0
-  shootDamage: 1
+  shootDamage: 5
   _aimbotAimSpeed: 30
   _shootCooldown: 0.1
   _shootParticle: {fileID: 5527684057906955414}
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  _currentHealth: 10
+  _currentHealth: 15
   hasDeathAnim: 0
   _animator: {fileID: 0}
 --- !u!1 &5731768144048047249

@@ -38005,6 +38005,7 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   waveIndex: 0
   WaveStarted: 0
+  waveAmount: 3
 --- !u!4 &843411365
 Transform:
   m_ObjectHideFlags: 0
@@ -38035,7 +38036,9 @@ MonoBehaviour:
   _mainMenuCanvasParent: {fileID: 0}
   _pausedCanvasParent: {fileID: 0}
   _jokeChoosingPanel: {fileID: 0}
-  _arenaHud: {fileID: 0}
+  _inPlayPanel: {fileID: 0}
+  _playerInfo: {fileID: 0}
+  _deathPanel: {fileID: 0}
   CurrentState: 0
   startingScene: 2
   _audioSource: {fileID: 0}
@@ -64602,7 +64605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1420850229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64639,7 +64642,6 @@ MonoBehaviour:
     waveEnemies: []
     waveSpawnPositions: []
     currentWaveEnemies: []
-  nextWaveIndex: 0
   _enemyRemainingText: {fileID: 0}
 --- !u!4 &1420850230
 Transform:
