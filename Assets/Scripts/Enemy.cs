@@ -12,7 +12,7 @@ public class Enemy : Entity
     private Vector3 _targetPosition;
 
     [SerializeField]
-    private bool _isEnabled = true;
+    protected bool _isEnabled = true;
 
     public bool chaseTarget = true;
 
@@ -40,9 +40,9 @@ public class Enemy : Entity
                 MoveAround();
                 _agent.SetDestination(_targetPosition);
             }
-        }
 
-        transform.LookAt(target);
+            transform.LookAt(target);
+        }
     }
 
     protected virtual void MoveAround()

@@ -38,6 +38,14 @@ public class ShootingEnemy : Enemy
     {
         base.Update();
 
+        ShootLogic();
+
+        //TODO: need to change this, so enemies can turn around while moving to show samuels art
+        // transform.LookAt(target);
+    }
+
+    public void ShootLogic()
+    {
         CheckLoSToPlayer();
 
         _shootTimer += Time.deltaTime;
@@ -47,9 +55,6 @@ public class ShootingEnemy : Enemy
             Shoot();
             _shootTimer = 0;
         }
-
-        //TODO: need to change this, so enemies can turn around while moving to show samuels art
-        // transform.LookAt(target);
     }
 
     public void Shoot()
