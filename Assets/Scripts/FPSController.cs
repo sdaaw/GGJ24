@@ -218,7 +218,7 @@ public class FPSController : MonoBehaviour
             {
                 hit.transform.GetComponent<Entity>().CurrentHealth -= shootDamage;
             }
-            else
+            else if (hit.transform.tag != "bullet")
             {
                 Instantiate(_bulletHole, hit.point + (hit.normal * .01f), Quaternion.FromToRotation(Vector3.up, hit.normal));
             }

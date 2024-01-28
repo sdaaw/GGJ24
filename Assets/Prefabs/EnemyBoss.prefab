@@ -132,7 +132,7 @@ MonoBehaviour:
   chaseTarget: 0
   _timerMax: 1
   _muzzleFlash: {fileID: 0}
-  _bullet: {fileID: 0}
+  _bullet: {fileID: 3681139597055551029, guid: 5837e4eb3dde0f24fbbb5570bf51bff5, type: 3}
   _bulletVelocity: 15
   _damage: 5
   _shootTimerMax: 2

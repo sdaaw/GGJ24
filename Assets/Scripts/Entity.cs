@@ -32,7 +32,7 @@ public class Entity : MonoBehaviour
 
     private Renderer _renderer;
 
-    void Start()
+    protected virtual void Start()
     {
         _renderer = GetComponent<Renderer>();
     }

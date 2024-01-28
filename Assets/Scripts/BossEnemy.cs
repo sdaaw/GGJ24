@@ -12,6 +12,18 @@ public class BossEnemy : ShootingEnemy
     [SerializeField]
     private List<Transform> _teleportPositions = new List<Transform>();
 
+    IEnumerator WaitForPlayer()
+    {
+        yield return new WaitForSeconds(1);
+        SetTarget(FindFirstObjectByType<FPSController>().transform);
+        this._isEnabled = true;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        StartCoroutine(WaitForPlayer());
+    }
 
     public void Teleport()
     {
@@ -21,15 +33,20 @@ public class BossEnemy : ShootingEnemy
 
     protected override void Update()
     {
-        _teleportTimer += Time.deltaTime;
-
-        if (_teleportTimer >= _teleportTimerMax)
+        if (_isEnabled && target != null)
         {
-            Teleport();
-            _teleportTimer = 0;
-        }
+            _teleportTimer += Time.deltaTime;
 
-        base.Update();
+            if (_teleportTimer >= _teleportTimerMax)
+            {
+                Teleport();
+                _teleportTimer = 0;
+            }
+
+            ShootLogic();
+
+            base.Update();
+        }
     }
 
 }

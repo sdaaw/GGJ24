@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1505515721000391895}
   - component: {fileID: 7666907195821388876}
   m_Layer: 8
-  m_Name: Bullet
+  m_Name: BulletBoss
   m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.531864, y: 0.51, z: -6.3430037}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
