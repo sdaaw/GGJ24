@@ -129,7 +129,7 @@ public class FPSController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         viewmodelObject.transform.parent = cameraObject.transform;
-        viewmodelObject.transform.localPosition = new Vector3(1.44f, -0.3f, 1.65f); //XDDDDDDDDDDDDDDDDD
+        viewmodelObject.transform.localPosition = new Vector3(1.44f, -0.5f, 1.65f); //XDDDDDDDDDDDDDDDDD
         viewmodelObject.transform.localRotation = Quaternion.identity;
 
         _animator.speed = 0.5f;

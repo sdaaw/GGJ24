@@ -81,6 +81,8 @@ public class GameStateHandler : MonoBehaviour
                 GameManager.instance.player.GetComponent<FPSController>().viewmodelObject.SetActive(true);
                 GameManager.instance.SpawnNextWave();
 
+                _audioSource.Play();
+
                 Cursor.lockState = CursorLockMode.Locked;
                 break;
             }

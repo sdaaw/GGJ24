@@ -35264,7 +35264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3410477171903431530, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4318473366812918323, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
       propertyPath: m_Name
@@ -35298,6 +35298,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.1981132
       objectReference: {fileID: 0}
+    - target: {fileID: 8215490462683714033, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8215490462683714033, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 843411363}
     - target: {fileID: 8363298592820016276, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 66.69
@@ -38205,7 +38213,7 @@ MonoBehaviour:
   _arenaHud: {fileID: 0}
   CurrentState: 0
   startingScene: 1
-  _audioSource: {fileID: 0}
+  _audioSource: {fileID: 1052871163}
 --- !u!114 &843411367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38225,7 +38233,7 @@ MonoBehaviour:
   - {fileID: 1228471199}
   - {fileID: 38461633}
   JokeCycleCount: 3
-  _jokePopularityText: {fileID: 0}
+  _jokePopularityText: {fileID: 41487254}
 --- !u!114 &843411368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47742,7 +47750,7 @@ GameObject:
   - component: {fileID: 1052871164}
   - component: {fileID: 1052871163}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BGMSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47755,12 +47763,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052871162}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7c5a1273a58ff88479ea935a51a835da, type: 3}
   m_Resource: {fileID: 8300000, guid: 7c5a1273a58ff88479ea935a51a835da, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.591
   m_Pitch: 1
   Loop: 1
@@ -90831,7 +90839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fcad77108f4fb814db6f303946948d0e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.48
+      value: 6.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fcad77108f4fb814db6f303946948d0e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -90839,7 +90847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fcad77108f4fb814db6f303946948d0e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -60.49
+      value: -58.59
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fcad77108f4fb814db6f303946948d0e, type: 3}
       propertyPath: m_LocalRotation.w
