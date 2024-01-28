@@ -60,7 +60,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-
         if(enemyController.currentWave.enemyAmount == 0 && WaveStarted)
         {
             StateHandler.CurrentState = GameStateHandler.GameState.WaveDefeated;
