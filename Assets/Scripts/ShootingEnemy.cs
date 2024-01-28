@@ -6,6 +6,9 @@ using UnityEngine.AI;
 public class ShootingEnemy : Enemy
 {
     [SerializeField]
+    private GameObject _muzzleFlash;
+
+    [SerializeField]
     private GameObject _bullet;
 
     [SerializeField]
@@ -46,13 +49,14 @@ public class ShootingEnemy : Enemy
         }
 
         //TODO: need to change this, so enemies can turn around while moving to show samuels art
-        transform.LookAt(target);
+        // transform.LookAt(target);
     }
 
     public void Shoot()
     {
         GameObject bullet = Instantiate(_bullet, transform.position + transform.forward, Quaternion.identity);
         bullet.GetComponent<Bullet>().Activate(_bulletVelocity, transform.forward, transform, _damage);
+        StartCoroutine(muzzleFlash());
     }
 
     public void CheckLoSToPlayer()
@@ -60,7 +64,7 @@ public class ShootingEnemy : Enemy
         RaycastHit hit;
         var rayDirection = target.position - transform.position;
 
-        if (Physics.Raycast(transform.position, rayDirection, out hit))
+        if (Physics.Raycast(transform.position - new Vector3(0,0.5f,0), rayDirection, out hit))
         {
             if (hit.transform.GetComponent<FPSController>())
             {
@@ -72,6 +76,13 @@ public class ShootingEnemy : Enemy
             }
         }
 
+    }
+
+    IEnumerator muzzleFlash()
+    {
+        _muzzleFlash.SetActive(true);
+        yield return new WaitForSeconds(0.25f);
+        _muzzleFlash.SetActive(false);
     }
 
 

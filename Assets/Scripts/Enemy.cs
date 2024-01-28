@@ -41,6 +41,8 @@ public class Enemy : Entity
                 _agent.SetDestination(_targetPosition);
             }
         }
+
+        transform.LookAt(target);
     }
 
     protected virtual void MoveAround()
