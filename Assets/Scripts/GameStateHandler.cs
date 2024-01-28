@@ -16,7 +16,8 @@ public class GameStateHandler : MonoBehaviour
         Intro,
         GeneratingJokes,
         ChoosingJoke,
-        BattlePrepare
+        BattlePrepare,
+        WaveDefeated
     }
 
     [SerializeField]
@@ -74,10 +75,13 @@ public class GameStateHandler : MonoBehaviour
 
             case GameState.InPlay:
             {
+                if (_previousState == GameState.Paused) return;
+                GameManager.instance.player.GetComponent<FPSController>().cameraObject.transform.position = GameManager.instance.player.transform.position;
                 GameManager.instance.player.GetComponent<FPSController>().freezeControls = false;
                 GameManager.instance.player.GetComponent<FPSController>().viewmodelObject.SetActive(true);
+                GameManager.instance.SpawnNextWave();
 
-                //GameManager.instance.EnemyController.SpawnWave();
+                GameManager.instance.EnemyController.SpawnWave();
 
                 Cursor.lockState = CursorLockMode.Locked;
                 break;
@@ -101,6 +105,13 @@ public class GameStateHandler : MonoBehaviour
             case GameState.Intro:
             {
                 DialogueManager.instance.introSceneRunning = true;
+                break;
+            }
+            case GameState.WaveDefeated:
+            {
+                GameManager.instance.WaveStarted = false;
+                GameManager.instance.enemyController.currentWave = null;
+                CurrentState = GameState.BattlePrepare;
                 break;
             }
         }

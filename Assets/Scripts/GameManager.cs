@@ -34,21 +34,18 @@ public class GameManager : MonoBehaviour
 
     public int MoneyReward;
 
-    public EnemyController EnemyController;
+    public EnemyController enemyController;
 
     public int waveIndex;
+
+    public bool WaveStarted;
 
     void Start()
     {
         StateHandler = GetComponent<GameStateHandler>();
-        EnemyController = GetComponent<EnemyController>();  
+        enemyController = GetComponent<EnemyController>();  
 
         if (instance == null) { instance = this; }
-
-        if(StateHandler.startingScene == GameStateHandler.GameState.InPlay)
-        {
-            SpawnPlayer();
-        }
     }
 
     public Vector3 GetSpawnPos()
@@ -59,6 +56,14 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         StateHandler.CurrentState = GameStateHandler.GameState.Intro;
+    }
+
+    private void Update()
+    {
+        if(enemyController.currentWave.enemyAmount == 0 && WaveStarted)
+        {
+            StateHandler.CurrentState = GameStateHandler.GameState.WaveDefeated;
+        }
     }
 
     public void SpawnPlayer()
@@ -87,5 +92,12 @@ public class GameManager : MonoBehaviour
 
         Destroy(player);
         player = null;
+    }
+
+    public void SpawnNextWave()
+    {
+        enemyController.SpawnWave(enemyController.enemyWaves[waveIndex]);
+        enemyController.currentWave = enemyController.enemyWaves[waveIndex];
+        WaveStarted = true;
     }
 }
