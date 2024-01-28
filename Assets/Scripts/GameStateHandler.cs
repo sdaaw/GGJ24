@@ -99,7 +99,7 @@ public class GameStateHandler : MonoBehaviour
             }
             case GameState.ChoosingJoke:
             {
-                _audioSource.Stop();
+                _audioSource.Pause();
                 if (!_quizbgmPlayed) SoundManager.PlayASource("quizbgm");
                 _quizbgmPlayed = true;
                 Cursor.lockState = CursorLockMode.None;
