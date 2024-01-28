@@ -33,6 +33,7 @@ public class DialogueBox : MonoBehaviour
 
     public void DisplayText(string text, float speed)
     {
+        gameObject.SetActive(true);
         _dialogueTextObject.text = "";
         _idx = 0;
         state = DialogueBoxState.InProgress;
@@ -49,6 +50,8 @@ public class DialogueBox : MonoBehaviour
 
         if (_idx >= text.Length)
         {
+            yield return new WaitForSeconds(1f);
+            gameObject.SetActive(false);
             state = DialogueBoxState.Done;
             yield return null;
         } 
