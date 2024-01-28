@@ -11,5 +11,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: c7ca289aeb8f5854a9337b68e6c29911
+  - enabled: 1
+    path: Assets/Scenes/MikkoSample.unity
+    guid: 87aa40383437a7648856af9cd1b8e442
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: d1690904a57dbd8479a5cfbbd0e397d9
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

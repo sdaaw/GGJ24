@@ -107,4 +107,14 @@ public class GameManager : MonoBehaviour
         WaveStarted = true;
         waveIndex++;
     }
+
+    public void LoadLeven(string lvlName)
+    {
+        Application.LoadLevel(lvlName);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
