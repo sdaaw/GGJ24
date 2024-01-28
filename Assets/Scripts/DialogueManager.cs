@@ -109,6 +109,7 @@ public class DialogueManager : MonoBehaviour
         if (_chosenJoke.Grade == Joke.JokeGrade.Bad)
         {
             _dialogueBox.DisplayText(BAD_JOKE_REACTIONS[Random.Range(0, BAD_JOKE_REACTIONS.Length)], 0.01f);
+            SoundManager.PlayASource("boo");
         }
         if (_chosenJoke.Grade == Joke.JokeGrade.Medium)
         {
@@ -116,7 +117,7 @@ public class DialogueManager : MonoBehaviour
         }
         if (_chosenJoke.Grade == Joke.JokeGrade.Best)
         {
-            
+            SoundManager.PlayASource("biglaugh");
             _dialogueBox.DisplayText(BEST_JOKE_REACTIONS[Random.Range(0, BEST_JOKE_REACTIONS.Length)], 0.01f);
             
         }
