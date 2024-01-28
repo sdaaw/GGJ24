@@ -89,6 +89,9 @@ public class GameStateHandler : MonoBehaviour
 
                 _audioSource.Play();
 
+                // TODO: hp text
+
+
                 Cursor.lockState = CursorLockMode.Locked;
                 break;
             }

@@ -151,7 +151,6 @@ public class FPSController : MonoBehaviour
 
         if(GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.BattlePrepare || GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.ChoosingJoke)
         {
-            // TODO: disable gun in cinematic mode
             cameraObject.transform.position = Vector3.Lerp(cameraObject.transform.position, GameManager.instance.cameraCinematicPosition.position, _cinematicCameraTimer / 2);
             _cinematicCameraTimer += Time.deltaTime;
             cameraObject.transform.LookAt(GameManager.instance.cameraCinematicLookAtPosition);
