@@ -17,15 +17,22 @@ public class DialogueManager : MonoBehaviour
     public readonly string[] BAD_JOKE_REACTIONS = new string[]
     {
         "I think my mama would have made a better joke.. HAHAHA HA H@! %A A?# H!&#@ HAH$A",
-        "Mamaless behaviour.. Disappointing. *sighs*"
+        "C'mon, think about your mother! Is that all you got?",
+        "Not sure about that one chief...",
+        "I feel... embarrassed for you."
+
     };
     public readonly string[] MEDIUM_JOKE_REACTIONS = new string[]
     {
-        "That was alright.."
+        "It's ok, not your best. Just ok.",
+        "That was so mediocre i already forgot what you said"
+
     };
     public readonly string[] BEST_JOKE_REACTIONS = new string[]
     {
-        "Peak humour!"
+        "I think even yo mama appreciated that one!",
+        "Good thing yo mama wasn't here to hear that!",
+        "That was so good I could have made that joke myself!"
     };
 
     public readonly string[] PREPARE_DIALOGUES = new string[]
