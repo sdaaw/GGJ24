@@ -56,7 +56,10 @@ public class ShootingEnemy : Enemy
     {
         GameObject bullet = Instantiate(_bullet, transform.position + transform.forward, Quaternion.identity);
         bullet.GetComponent<Bullet>().Activate(_bulletVelocity, transform.forward, transform, _damage);
-        StartCoroutine(muzzleFlash());
+        if (_muzzleFlash != null)
+        {
+            StartCoroutine(muzzleFlash());
+        }
     }
 
     public void CheckLoSToPlayer()
