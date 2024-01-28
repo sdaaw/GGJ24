@@ -74,6 +74,13 @@ public class GameManager : MonoBehaviour
         Camera.main.transform.localPosition = new Vector3(0, 0.5f, 0);
     }
 
+    public void DespawnPlayer()
+    {
+        player.GetComponent<FPSController>().cameraObject.transform.SetParent(null);
+        Destroy(player.GetComponent<FPSController>().viewmodelObject);
+        Destroy(player);
+    }
+
     public void QuitGameToMenu()
     {
         if(EntitiesInWorld.Count > 0) 

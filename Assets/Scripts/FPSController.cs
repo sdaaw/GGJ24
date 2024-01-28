@@ -97,6 +97,8 @@ public class FPSController : MonoBehaviour
 
     public GameObject viewmodelObject;
 
+    private Vector3 _viewmodelLocalPosition;
+
     [SerializeField]
     private Animator _animator;
 
@@ -127,6 +129,8 @@ public class FPSController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         viewmodelObject.transform.parent = cameraObject.transform;
+        viewmodelObject.transform.localPosition = new Vector3(1.44f, -0.3f, 1.65f); //XDDDDDDDDDDDDDDDDD
+        viewmodelObject.transform.localRotation = Quaternion.identity;
 
         _animator.speed = 0.5f;
 
