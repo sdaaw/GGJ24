@@ -37,8 +37,9 @@ public class DialogueManager : MonoBehaviour
 
     public readonly string[] PREPARE_DIALOGUES = new string[]
     {
-        "That was.. something.. how about we start the show?",
-        "GET READY"
+        "That was.. something.. how about we continue to the actual show?",
+        "GET READY...",
+        "GO!"
     };
 
 
