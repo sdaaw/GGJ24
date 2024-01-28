@@ -68,7 +68,7 @@ public class Enemy : Entity
 
     protected virtual void GetRandomClosePosition()
     {
-        Vector3 target = RandomNavSphere(transform.position, 2, -1);
+        Vector3 target = RandomNavSphere(transform.position, 3, -1);
         SetTarget(target);
     }
 
