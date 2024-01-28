@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(enemyController.currentWave.enemyAmount == 0 && WaveStarted)
+        if(enemyController.currentWave.enemiesRemaining == 0 && WaveStarted)
         {
             StateHandler.CurrentState = GameStateHandler.GameState.WaveDefeated;
         }
@@ -89,7 +89,6 @@ public class GameManager : MonoBehaviour
         Camera.main.transform.parent = null;
 
         Camera.main.transform.position = Vector3.zero;
-
         Destroy(player);
         player = null;
     }

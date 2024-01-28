@@ -110,6 +110,7 @@ public class DialogueManager : MonoBehaviour
         jokesChosen++;
         if (jokesChosen == JokeCycleCount)
         {
+            jokesChosen = 0;
             GameManager.instance.StateHandler.CurrentState = GameStateHandler.GameState.BattlePrepare;
         }
         else
