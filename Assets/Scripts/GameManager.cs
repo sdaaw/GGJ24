@@ -105,5 +105,6 @@ public class GameManager : MonoBehaviour
         enemyController.SpawnWave(enemyController.enemyWaves[waveIndex]);
         enemyController.currentWave = enemyController.enemyWaves[waveIndex];
         WaveStarted = true;
+        waveIndex++;
     }
 }

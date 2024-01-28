@@ -91,6 +91,7 @@ public class GameStateHandler : MonoBehaviour
             }
             case GameState.ChoosingJoke:
             {
+                SoundManager.PlayASource("quizbgm");
                 Cursor.lockState = CursorLockMode.None;
                 break;
             }
