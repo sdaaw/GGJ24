@@ -32,9 +32,14 @@ public class Entity : MonoBehaviour
 
     private Renderer _renderer;
 
+    public bool hasDeathAnim;
+    [SerializeField]
+    private Animator _animator;
+
     protected virtual void Start()
     {
         _renderer = GetComponent<Renderer>();
+        _animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -54,6 +59,11 @@ public class Entity : MonoBehaviour
     public void OnDie()
     {
         SoundManager.PlayASource("Death");
+        if(_animator != null && hasDeathAnim)
+        {
+            _animator.SetTrigger("Death");
+        }
+
         var econ = FindFirstObjectByType<EnemyController>();
         var enemy = this.GetComponent<Enemy>();
         if (econ.currentWave.currentWaveEnemies.Contains(enemy))
@@ -61,6 +71,19 @@ public class Entity : MonoBehaviour
             econ.currentWave.currentWaveEnemies.Remove(enemy);
         }
 
+        if(hasDeathAnim)
+        {
+            StartCoroutine(WaitDeath());
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator WaitDeath()
+    {
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 
