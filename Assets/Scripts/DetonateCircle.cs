@@ -32,6 +32,7 @@ public class DetonateCircle : MonoBehaviour
         // spawn explosion particle
         // deal damage
         _canDealDamage = true;
+        SoundManager.PlayASource("Explosion");
         SpawnExplosion();
         StartCoroutine(RemoveExplosion());
     }

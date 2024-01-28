@@ -53,6 +53,7 @@ public class Entity : MonoBehaviour
 
     public void OnDie()
     {
+        SoundManager.PlayASource("Death");
         var econ = FindFirstObjectByType<EnemyController>();
         var enemy = this.GetComponent<Enemy>();
         if (econ.currentWave.currentWaveEnemies.Contains(enemy))
