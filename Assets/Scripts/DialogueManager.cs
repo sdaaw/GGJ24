@@ -14,7 +14,6 @@ public class DialogueManager : MonoBehaviour
         "nothing else, thank you"
     };
 
-
     public readonly string[] BAD_JOKE_REACTIONS = new string[]
     {
         "I think my mama would have made a better joke.. HAHAHA HA H@! %A A?# H!&#@ HAH$A",
@@ -22,11 +21,11 @@ public class DialogueManager : MonoBehaviour
     };
     public readonly string[] MEDIUM_JOKE_REACTIONS = new string[]
     {
-        ""
+        "That was alright.."
     };
     public readonly string[] BEST_JOKE_REACTIONS = new string[]
     {
-        ""
+        "Peak humour!"
     };
 
 
@@ -81,15 +80,15 @@ public class DialogueManager : MonoBehaviour
 
             if(_chosenJoke.Grade == Joke.JokeGrade.Bad)
             {
-                _dialogueBox.DisplayText(BAD_JOKE_REACTIONS[Random.Range(0, BAD_JOKE_REACTIONS.Length)], 0.05f);
+                _dialogueBox.DisplayText(BAD_JOKE_REACTIONS[Random.Range(0, BAD_JOKE_REACTIONS.Length)], 0.01f);
             }
             if (_chosenJoke.Grade == Joke.JokeGrade.Medium)
             {
-                _dialogueBox.DisplayText("M E D I U M", 0.05f);
+                _dialogueBox.DisplayText(MEDIUM_JOKE_REACTIONS[Random.Range(0, MEDIUM_JOKE_REACTIONS.Length)], 0.01f);
             }
             if (_chosenJoke.Grade == Joke.JokeGrade.Best)
             {
-                _dialogueBox.DisplayText("B E S T", 0.05f);
+                _dialogueBox.DisplayText(BEST_JOKE_REACTIONS[Random.Range(0, BEST_JOKE_REACTIONS.Length)], 0.01f);
             }
             jokesChosen++;
             if(jokesChosen == JokeCycleCount)
@@ -158,7 +157,7 @@ public class DialogueManager : MonoBehaviour
                 GameManager.instance.StateHandler.CurrentState = GameStateHandler.GameState.GeneratingJokes;
                 return;
             }
-            _dialogueBox.DisplayText(INTRO_DIALOGUES[_idx], 0.05f);
+            _dialogueBox.DisplayText(INTRO_DIALOGUES[_idx], 0.01f);
             _idx++;
         }
     }

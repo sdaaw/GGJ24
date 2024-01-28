@@ -34891,9 +34891,65 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartGame
       objectReference: {fileID: 0}
+    - target: {fileID: 584177946251606712, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_text
+      value: Your mama ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 700196855907577407, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_text
+      value: YOMAMADAMA
+      objectReference: {fileID: 0}
+    - target: {fileID: 857291316079635401, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_text
+      value: Do you have it what it takes?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155432112311803435, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3410477171903431530, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4318473366812918323, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392218841719964663, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6572606999108884566, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 129.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6572606999108884566, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 69.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094360299516140653, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -33.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7174604312212440983, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_Color.b
+      value: 0.1981132
+      objectReference: {fileID: 0}
+    - target: {fileID: 7174604312212440983, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_Color.g
+      value: 0.1981132
+      objectReference: {fileID: 0}
+    - target: {fileID: 7174604312212440983, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_Color.r
+      value: 0.1981132
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805990918573368050, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363298592820016276, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 66.69
       objectReference: {fileID: 0}
     - target: {fileID: 8464887987229489258, guid: cea6902e8a8d57249a3cc7a5fb992637, type: 3}
       propertyPath: m_Pivot.x

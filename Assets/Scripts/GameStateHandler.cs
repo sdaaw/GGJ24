@@ -73,6 +73,7 @@ public class GameStateHandler : MonoBehaviour
             }
             case GameState.InPlay:
             {
+                GameManager.instance.player.GetComponent<FPSController>().viewmodelObject.SetActive(true);
                 Cursor.lockState = CursorLockMode.Locked;
                 break;
             }
@@ -84,6 +85,12 @@ public class GameStateHandler : MonoBehaviour
             case GameState.ChoosingJoke:
             {
                 Cursor.lockState = CursorLockMode.None;
+                break;
+            }
+            case GameState.BattlePrepare:
+            {
+                GameManager.instance.SpawnPlayer();
+                GameManager.instance.player.GetComponent<FPSController>().viewmodelObject.SetActive(false);
                 break;
             }
             case GameState.Intro:

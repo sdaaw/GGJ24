@@ -238,7 +238,7 @@ MonoBehaviour:
   _dashCooldown: 0.4
   _isDashOnCooldown: 0
   _isDashing: 0
-  _viewmodelObject: {fileID: 7952682555267473509}
+  viewmodelObject: {fileID: 7952682555267473509}
   _animator: {fileID: 1593262250704279399}
 --- !u!95 &7096573779249896840
 Animator:
