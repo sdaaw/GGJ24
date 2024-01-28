@@ -53,6 +53,13 @@ public class Entity : MonoBehaviour
 
     public void OnDie()
     {
+        var econ = FindFirstObjectByType<EnemyController>();
+        var enemy = this.GetComponent<Enemy>();
+        if (econ.currentWave.currentWaveEnemies.Contains(enemy))
+        {
+            econ.currentWave.currentWaveEnemies.Remove(enemy);
+        }
+
         Destroy(gameObject);
     }
 
