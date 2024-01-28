@@ -30,7 +30,7 @@ public class GameStateHandler : MonoBehaviour
     private GameObject _jokeChoosingPanel;
 
     [SerializeField]
-    private GameObject _arenaHud;
+    private GameObject _inPlayPanel;
 
     public GameState CurrentState;
     private GameState _previousState { get; set; }
@@ -121,6 +121,7 @@ public class GameStateHandler : MonoBehaviour
         _pausedCanvasParent.SetActive(CurrentState == GameState.Paused);
         _mainMenuCanvasParent.SetActive(CurrentState == GameState.InMenu);
         _jokeChoosingPanel.SetActive(CurrentState == GameState.ChoosingJoke);
+        _inPlayPanel.SetActive(CurrentState == GameState.InPlay);
     }
 
     //this is for menu button XD
