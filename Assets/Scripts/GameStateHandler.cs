@@ -13,6 +13,7 @@ public class GameStateHandler : MonoBehaviour
         InMenu,
         InPlay,
         Paused,
+        Intro,
         GeneratingJokes,
         ChoosingJoke,
         BattlePrepare
@@ -30,7 +31,7 @@ public class GameStateHandler : MonoBehaviour
     [SerializeField]
     private GameObject _arenaHud;
 
-    public GameState CurrentState { get; set; }
+    public GameState CurrentState;
     private GameState _previousState { get; set; }
 
     public GameState startingScene;
@@ -85,10 +86,15 @@ public class GameStateHandler : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 break;
             }
+            case GameState.Intro:
+            {
+                DialogueManager.instance.introSceneRunning = true;
+                break;
+            }
         }
-        //_pausedCanvasParent.SetActive(CurrentState == GameState.Paused);
-        //_mainMenuCanvasParent.SetActive(CurrentState == GameState.InMenu);
-        //_jokeChoosingPanel.SetActive(CurrentState == GameState.ChoosingJoke);
+        _pausedCanvasParent.SetActive(CurrentState == GameState.Paused);
+        _mainMenuCanvasParent.SetActive(CurrentState == GameState.InMenu);
+        _jokeChoosingPanel.SetActive(CurrentState == GameState.ChoosingJoke);
     }
 
     //this is for menu button XD

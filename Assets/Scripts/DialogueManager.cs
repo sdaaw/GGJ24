@@ -30,8 +30,7 @@ public class DialogueManager : MonoBehaviour
     };
 
 
-    [SerializeField]
-    private GameObject _dialoguePanelObject;
+    public GameObject dialoguePanelObject;
 
     private DialogueBox _dialogueBox;
 
@@ -61,13 +60,16 @@ public class DialogueManager : MonoBehaviour
     {
         if(instance == null) instance = this;
 
-        _dialogueBox = _dialoguePanelObject.GetComponent<DialogueBox>();
+        _dialogueBox = dialoguePanelObject.GetComponent<DialogueBox>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (introSceneRunning) IntroDialogueScene();
+        if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.Intro)
+        {
+            IntroDialogueScene();
+        }
 
         if (GameManager.instance.StateHandler.CurrentState == GameStateHandler.GameState.GeneratingJokes)
         {
@@ -147,12 +149,13 @@ public class DialogueManager : MonoBehaviour
 
     public void IntroDialogueScene()
     {
-        _dialoguePanelObject.SetActive(introSceneRunning);
+        dialoguePanelObject.SetActive(introSceneRunning);
         if (_dialogueBox.state == DialogueBox.DialogueBoxState.Done)
         {
             if (_idx == INTRO_DIALOGUES.Length)
             {
                 introSceneRunning = false;
+                GameManager.instance.StateHandler.CurrentState = GameStateHandler.GameState.GeneratingJokes;
                 return;
             }
             _dialogueBox.DisplayText(INTRO_DIALOGUES[_idx], 0.05f);

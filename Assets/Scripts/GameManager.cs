@@ -45,13 +45,11 @@ public class GameManager : MonoBehaviour
         {
             SpawnPlayer();
         }
-
     }
 
     public void StartGame()
     {
-        StateHandler.CurrentState = GameStateHandler.GameState.InPlay;
-        SpawnPlayer();
+        StateHandler.CurrentState = GameStateHandler.GameState.Intro;
     }
 
     public void SpawnPlayer()
