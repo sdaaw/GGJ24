@@ -22,6 +22,12 @@ public class BossEnemy : ShootingEnemy
 
     IEnumerator WaitForPlayer()
     {
+        GameObject[] arr = GameObject.FindGameObjectsWithTag("spawnspot");
+        foreach(GameObject g in arr)
+        {
+            _teleportPositions.Add(g.transform);
+        }
+        
         yield return new WaitForSeconds(1);
         SetTarget(FindFirstObjectByType<FPSController>().transform);
         this._isEnabled = true;
