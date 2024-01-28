@@ -75,10 +75,21 @@ public class Entity : MonoBehaviour
         {
             StartCoroutine(WaitDeath());
         }
+        else if(GetComponent<FPSController>())
+        {
+            // TODO: player died here
+            StartCoroutine(ReturnToMainMenuOnDeath());
+        }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    private IEnumerator ReturnToMainMenuOnDeath()
+    {
+        yield return new WaitForSeconds(3);
+        Application.LoadLevel("MainMenu");
     }
 
     private IEnumerator WaitDeath()
