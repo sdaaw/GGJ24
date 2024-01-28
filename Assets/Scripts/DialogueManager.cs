@@ -15,10 +15,17 @@ public class DialogueManager : MonoBehaviour
     };
 
 
-    public readonly string[] MOCK_DIALOGUES = new string[]
+    public readonly string[] BAD_JOKE_REACTIONS = new string[]
     {
         "I think my mama would have made a better joke.. HAHAHA HA H@! %A A?# H!&#@ HAH$A",
-        "Mamaless behaviour.. Disappointing. *sighs*",
+        "Mamaless behaviour.. Disappointing. *sighs*"
+    };
+    public readonly string[] MEDIUM_JOKE_REACTIONS = new string[]
+    {
+        ""
+    };
+    public readonly string[] BEST_JOKE_REACTIONS = new string[]
+    {
         ""
     };
 
@@ -72,7 +79,7 @@ public class DialogueManager : MonoBehaviour
 
             if(_chosenJoke.Grade == Joke.JokeGrade.Bad)
             {
-                _dialogueBox.DisplayText("B A D", 0.05f);
+                _dialogueBox.DisplayText(BAD_JOKE_REACTIONS[Random.Range(0, BAD_JOKE_REACTIONS.Length)], 0.05f);
             }
             if (_chosenJoke.Grade == Joke.JokeGrade.Medium)
             {

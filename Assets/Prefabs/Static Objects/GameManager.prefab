@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6166450179287362817}
   - component: {fileID: 6848058772124647492}
   - component: {fileID: 8766760449603799359}
+  - component: {fileID: 9203561940793715813}
   m_Layer: 6
   m_Name: GameManager
   m_TagString: Untagged
@@ -51,6 +52,7 @@ MonoBehaviour:
   sphere: {fileID: 5814140499009697030, guid: 54f92a2091329104b930a294a6832370, type: 3}
   EntitiesInWorld: []
   StateHandler: {fileID: 0}
+  MoneyReward: 0
 --- !u!114 &8766760449603799359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,5 +67,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuCanvasParent: {fileID: 0}
   _pausedCanvasParent: {fileID: 0}
+  _jokeChoosingPanel: {fileID: 0}
   _arenaHud: {fileID: 0}
-  startingScene: 2
+  startingScene: 4
+  _audioSource: {fileID: 0}
+--- !u!114 &9203561940793715813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537258904842144127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0870b0c88e0f23b488a3ede247e3d94a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialoguePanelObject: {fileID: 0}
+  introSceneRunning: 0
+  _jokeButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  JokeCycleCount: 3
