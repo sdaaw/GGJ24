@@ -213,6 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mouseSensitivity: 100
   cameraObject: {fileID: 0}
+  cinematicCameraMode: 0
   _invertMouse: 0
   _fov: 80
   jumpForce: 1.2
@@ -5173,7 +5174,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1854018368f8c35469f2128c7b0a5a4b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
