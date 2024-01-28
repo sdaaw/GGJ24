@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemyController : MonoBehaviour
 {
@@ -8,14 +9,22 @@ public class EnemyController : MonoBehaviour
     public EnemyWave currentWave;
     public int nextWaveIndex = 0;
 
+    [SerializeField]
+    private TMP_Text _enemyRemainingText;
+
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             // TODO: needs last wave logic
             SpawnWave(enemyWaves[nextWaveIndex]);
             currentWave = enemyWaves[nextWaveIndex];
             nextWaveIndex++;
+        }
+
+        if (_enemyRemainingText != null && currentWave != null)
+        {
+            _enemyRemainingText.text = $"Enemies: {currentWave.enemiesRemaining}";
         }
     }
 
@@ -53,4 +62,8 @@ public class EnemyWave
     public List<Enemy> waveEnemies = new List<Enemy>();
     public List<Transform> waveSpawnPositions = new List<Transform>();
     public List<Enemy> currentWaveEnemies = new List<Enemy>();
+    public int enemiesRemaining
+    {
+        get { return currentWaveEnemies.Count; }
+    }
 }
