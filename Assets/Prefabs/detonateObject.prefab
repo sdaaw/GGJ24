@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8036403455805439983}
   - component: {fileID: 4597770241691961295}
+  - component: {fileID: 1458526465905297229}
   m_Layer: 0
   m_Name: detonateObject
   m_TagString: bullet
@@ -54,6 +55,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1458526465905297229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503311697379457349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252949f37f45e0441bef675821b23392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  detonateTimerMax: 1.5
 --- !u!1 &8649801371436161606
 GameObject:
   m_ObjectHideFlags: 0

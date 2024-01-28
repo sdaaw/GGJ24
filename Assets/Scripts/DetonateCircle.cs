@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class DetonateCircle : MonoBehaviour
 {
+    public float damage;
+
     private bool _canDealDamage;
 
+    private List<Entity> _alreadyDealtDamageTo = new List<Entity>();
 
-    // Update is called once per frame
-    void Update()
+    private float _detonateTimer = 0;
+    public float detonateTimerMax = 1.5f;
+
+    private void Update()
     {
-        
+        _detonateTimer += Time.deltaTime;
+
+        if (_detonateTimer >= detonateTimerMax)
+        {
+            Explode();
+            _detonateTimer = 0;
+        }
     }
 
     protected void Explode()
@@ -18,10 +29,26 @@ public class DetonateCircle : MonoBehaviour
         // spawn explosion particle
         // deal damage
         _canDealDamage = true;
+        StartCoroutine(RemoveExplosion());
     }
 
     private void OnTriggerStay(Collider other)
     {
-        
+        Entity hit = other.GetComponent<Entity>();
+        if (hit != null && _canDealDamage)
+        {
+            if (!_alreadyDealtDamageTo.Contains(hit))
+            {
+                // TODO: deal damage
+                Debug.Log(hit);
+                _alreadyDealtDamageTo.Add(hit);
+            }
+        }
+    }
+
+    IEnumerator RemoveExplosion()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(this.gameObject);
     }
 }
