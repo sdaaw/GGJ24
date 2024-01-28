@@ -10,7 +10,7 @@ public class LookAtPlayer : MonoBehaviour
 
     private void Start()
     {
-        playerPos = FindFirstObjectByType<FPSController>().transform;
+        playerPos = FindFirstObjectByType<Camera>().transform;
     }
     // Update is called once per frame
     void Update()
