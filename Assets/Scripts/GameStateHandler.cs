@@ -12,7 +12,9 @@ public class GameStateHandler : MonoBehaviour
         None,
         InMenu,
         InPlay,
-        Paused
+        Paused,
+        GeneratingJokes,
+        ChoosingJoke
     }
 
     [SerializeField]
@@ -22,12 +24,18 @@ public class GameStateHandler : MonoBehaviour
     private GameObject _pausedCanvasParent;
 
     [SerializeField]
+    private GameObject _jokeChoosingPanel;
+
+    [SerializeField]
     private GameObject _arenaHud;
 
     public GameState CurrentState { get; set; }
     private GameState _previousState { get; set; }
 
     public GameState startingScene;
+
+    [SerializeField]
+    private AudioSource _audioSource;
 
     void Start()
     {
@@ -65,9 +73,15 @@ public class GameStateHandler : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 break;
             }
+            case GameState.ChoosingJoke:
+            {
+                Cursor.lockState = CursorLockMode.None;
+                break;
+            }
         }
         _pausedCanvasParent.SetActive(CurrentState == GameState.Paused);
         _mainMenuCanvasParent.SetActive(CurrentState == GameState.InMenu);
+        _jokeChoosingPanel.SetActive(CurrentState == GameState.ChoosingJoke);
     }
 
     //this is for menu button XD
