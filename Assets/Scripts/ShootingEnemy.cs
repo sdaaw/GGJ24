@@ -82,6 +82,7 @@ public class ShootingEnemy : Enemy
     public void CheckLoSToPlayer()
     {
         RaycastHit hit;
+        if (target == null) return;
         var rayDirection = target.position - transform.position;
 
         if (Physics.Raycast(transform.position - new Vector3(0,0.5f,0), rayDirection, out hit))

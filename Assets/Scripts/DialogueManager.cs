@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-
+using TMPro;
 public class DialogueManager : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -70,6 +70,9 @@ public class DialogueManager : MonoBehaviour
 
     private bool transitionDelayStarted;
 
+    [SerializeField]
+    private TMP_Text _jokePopularityText;
+
     void Start()
     {
         if(instance == null) instance = this;
@@ -113,6 +116,7 @@ public class DialogueManager : MonoBehaviour
         if (_chosenJoke.Grade == Joke.JokeGrade.Best)
         {
             _dialogueBox.DisplayText(BEST_JOKE_REACTIONS[Random.Range(0, BEST_JOKE_REACTIONS.Length)], 0.01f);
+            
         }
         jokesChosen++;
         if (jokesChosen == JokeCycleCount)
@@ -154,6 +158,7 @@ public class DialogueManager : MonoBehaviour
     public void ChooseJoke(Joke joke)
     {
         GameManager.instance.MoneyReward += joke.moneyReward;
+        _jokePopularityText.text = "potential cashout\n$" + GameManager.instance.MoneyReward;
         _chosenJoke = joke;
     }
 

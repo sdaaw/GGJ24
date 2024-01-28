@@ -50,16 +50,16 @@ public class GameStateHandler : MonoBehaviour
     void Update()
     {
         CheckStates();
-        if (Input.GetKeyDown(KeyCode.Escape))
+        /*if (Input.GetKeyDown(KeyCode.Escape))
         {
             CurrentState = (CurrentState == GameState.Paused) ? GameState.InPlay : GameState.Paused;
-        }
+        }*/
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        /*if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             CurrentState = (CurrentState == GameState.BattlePrepare) ? GameState.InPlay : GameState.BattlePrepare;
             FindFirstObjectByType<FPSController>().ResetCameraPosition();
-        }
+        }*/
     }
 
     public void CheckStates()
