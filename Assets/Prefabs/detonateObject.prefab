@@ -53,8 +53,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.2530382, y: 1.3944004, z: 1.4506481}
+  m_Center: {x: 0.02369225, y: 0.19720021, z: 0.05994463}
 --- !u!114 &1458526465905297229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   detonateTimerMax: 1.5
+  _explosionParticle: {fileID: 100016, guid: 8c8b2f4f16667a140a4e8f6d9aeac37e, type: 3}
 --- !u!1 &8649801371436161606
 GameObject:
   m_ObjectHideFlags: 0

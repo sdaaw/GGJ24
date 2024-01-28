@@ -13,6 +13,9 @@ public class DetonateCircle : MonoBehaviour
     private float _detonateTimer = 0;
     public float detonateTimerMax = 1.5f;
 
+    [SerializeField]
+    private GameObject _explosionParticle;
+
     private void Update()
     {
         _detonateTimer += Time.deltaTime;
@@ -29,6 +32,7 @@ public class DetonateCircle : MonoBehaviour
         // spawn explosion particle
         // deal damage
         _canDealDamage = true;
+        SpawnExplosion();
         StartCoroutine(RemoveExplosion());
     }
 
@@ -40,9 +44,18 @@ public class DetonateCircle : MonoBehaviour
             if (!_alreadyDealtDamageTo.Contains(hit))
             {
                 // TODO: deal damage
-                Debug.Log(hit);
+                // Debug.Log(hit);
+                hit.CurrentHealth -= damage;
                 _alreadyDealtDamageTo.Add(hit);
             }
+        }
+    }
+
+    private void SpawnExplosion()
+    {
+        if (_explosionParticle != null)
+        {
+            Instantiate(_explosionParticle, transform.position, Quaternion.identity);
         }
     }
 
