@@ -3032,10 +3032,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyBoss
       objectReference: {fileID: 0}
-    - target: {fileID: 1070446182070905910, guid: 861419a616e500349a6b759926ce1171, type: 3}
-      propertyPath: m_TagString
-      value: entity
-      objectReference: {fileID: 0}
     - target: {fileID: 5394728796521201838, guid: 861419a616e500349a6b759926ce1171, type: 3}
       propertyPath: '_teleportPositions.Array.data[0]'
       value: 

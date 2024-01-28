@@ -10,7 +10,15 @@ public class BossEnemy : ShootingEnemy
     private float _teleportTimer;
 
     [SerializeField]
+    private float _attack2TimerMax;
+
+    private float _attack2Timer;
+
+    [SerializeField]
     private List<Transform> _teleportPositions = new List<Transform>();
+
+    [SerializeField]
+    private GameObject _detonateObjectPrefab;
 
     IEnumerator WaitForPlayer()
     {
@@ -45,8 +53,29 @@ public class BossEnemy : ShootingEnemy
 
             ShootLogic();
 
+            UpdateAttack2Timer();
+
             base.Update();
         }
+    }
+
+    private void UpdateAttack2Timer()
+    {
+
+        _attack2Timer += Time.deltaTime;
+
+        if (_attack2Timer >= _attack2TimerMax)
+        {
+            Attack2();
+            _attack2Timer = 0;
+        }
+    }
+
+    protected void Attack2()
+    {
+        var g = Instantiate(_detonateObjectPrefab, target.transform.position - new Vector3(0,1,0), Quaternion.identity);
+        // activate detonate timer
+
     }
 
 }

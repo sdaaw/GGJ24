@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4974854723761312994}
   m_Layer: 0
   m_Name: EnemyBoss
-  m_TagString: Untagged
+  m_TagString: entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,11 +86,13 @@ MonoBehaviour:
   _shootTimerMax: 2
   Agent: {fileID: 0}
   _teleportTimerMax: 4
+  _attack2TimerMax: 1
   _teleportPositions:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _detonateObjectPrefab: {fileID: 3503311697379457349, guid: a8ad1d710daa81c44b472667681aec15, type: 3}
 --- !u!195 &8980335524651735236
 NavMeshAgent:
   m_ObjectHideFlags: 0
